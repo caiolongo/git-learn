@@ -1,0 +1,203 @@
+{
+  "id": "cap6",
+  "title": "Capítulo 6 — Privacidade, segurança e administração",
+  "short": "Cap. 6",
+  "contentMd": "Proteja contas com 2FA e passkeys, dê a cada pessoa o menor acesso necessário e proteja o branch principal. Dependabot e secret scanning cuidam do código e das dependências. Peso na prova: 10–15%.\n\n### Objetivos de aprendizagem\n\n- Proteger contas com 2FA e passkeys.\n- Identificar papéis de repositório e de organização, times e permissões base.\n- Explicar Enterprise Managed Users (EMU) e políticas de Copilot na organização.\n- Comparar visibilidades public, private e internal.\n- Configurar branch protection rules e rulesets.\n- Descrever Dependabot, secret scanning e code scanning.\n\n### Autenticação: 2FA e passkeys\n\nCaminho: **Settings → Password and authentication**.\n\n- **Métodos de 2FA:** app autenticador (TOTP), chave de segurança física (WebAuthn), passkey, GitHub Mobile e SMS (o menos seguro).\n- **Recovery codes:** baixe e guarde em local seguro. Servem para entrar se você perder o segundo fator.\n- **Passkeys:** login sem senha com biometria, PIN ou chave. Resistem a phishing e também contam como 2FA.\n- O 2FA é obrigatório para quem contribui código no github.com. Organizações podem exigir 2FA de todos os membros em **Organization settings → Authentication security**.\n- **Acesso programático:** use personal access tokens (prefira os fine-grained, com escopo mínimo e validade) ou chaves SSH. A senha da conta não funciona no Git via HTTPS.\n\n### Papéis e permissões\n\nPapéis em repositórios de organização, do menor para o maior acesso:\n\n| Papel | Pode fazer |\n| --- | --- |\n| Read | Ver e clonar o código, abrir issues e comentar |\n| Triage | Read + gerenciar issues e PRs (labels, assignees, fechar) sem escrever código |\n| Write | Triage + push em branches e merge de PRs |\n| Maintain | Write + gerenciar algumas configurações do repositório, sem ações destrutivas ou sensíveis |\n| Admin | Acesso total: configurações, segurança, branch protection, apagar o repositório |\n\nNo GitHub Enterprise Cloud também dá para criar **custom repository roles**. Em repositórios de **conta pessoal** só existem o dono e colaboradores, que recebem acesso de escrita.\n\nPapéis na organização:\n\n- **Owner:** controle total da organização. Tenha pelo menos dois.\n- **Member:** recebe a **base permission** (No access, Read, Write ou Admin) em todos os repositórios, mais o que os times concederem.\n- **Billing manager:** gerencia cobrança, sem acesso ao código.\n- **Security manager:** vê alertas e configurações de segurança em todos os repositórios.\n- **Moderator:** bloqueia usuários, oculta comentários e modera discussões.\n- **Outside collaborator:** pessoa de fora com acesso só a repositórios específicos, sem ser membro.\n\n**Times (teams)** agrupam membros. Dê acesso a repositórios por time em vez de por pessoa. Times podem ser aninhados (filhos herdam permissões do pai), ser visíveis ou secretos e ser mencionados com `@org/time`. Caminho: **organização → Teams → New team**.\n\nO **audit log** da organização registra quem fez o quê: mudanças de acesso, configurações e repositórios.\n\n### Enterprise Managed Users (EMU)\n\nNo EMU, as contas são criadas e controladas pelo provedor de identidade (IdP) da empresa, como Microsoft Entra ID, Okta ou PingFederate.\n\n- Provisionamento e remoção via SCIM; login via SAML ou OIDC.\n- O nome de usuário leva o sufixo da empresa (ex.: `maria_acme`).\n- As contas não criam conteúdo público (repositórios, gists, issues ou comentários em projetos externos) e só colaboram dentro da enterprise.\n- Diferente do SAML SSO comum, em que a pessoa usa a própria conta pessoal e só se autentica pelo IdP para acessar a organização.\n\n**Políticas de Copilot:** owners da organização ou da enterprise atribuem licenças e definem quais recursos e modelos estão liberados, o filtro de código público e a exclusão de conteúdo (arquivos que o Copilot não deve usar). Políticas da enterprise prevalecem sobre as da organização.\n\n### Visibilidade de repositórios\n\n| Visibilidade | Quem vê | Disponibilidade |\n| --- | --- | --- |\n| Public | Qualquer pessoa na internet | Todos os planos |\n| Private | Só quem recebeu acesso | Todos os planos |\n| Internal | Todos os membros da enterprise | Só organizações de uma conta enterprise |\n\nMude em **Settings → General → Danger Zone → Change visibility**. Ao tornar um repositório público privado, ele perde stars e watchers, e forks públicos se desvinculam.\n\n### Branch protection rules e rulesets\n\nCaminho: **Settings → Branches → Add branch protection rule** (ou **Settings → Rules → Rulesets**).\n\n- Exigir pull request antes do merge, com N aprovações.\n- Exigir revisão de code owners.\n- Descartar aprovações antigas quando chegam novos commits.\n- Exigir status checks aprovados (ex.: o workflow de CI).\n- Exigir resolução de conversas, commits assinados e histórico linear.\n- Bloquear force push e exclusão do branch.\n- Restringir quem pode fazer push e aplicar as regras também a administradores.\n\nRulesets são a evolução: várias regras podem valer ao mesmo tempo, podem cobrir tags e organizações inteiras, têm modo \"evaluate\" para testar e ficam visíveis a quem tem acesso de leitura.\n\n### Segurança do código e das dependências\n\nCaminho: **Settings → Advanced Security** (antes \"Code security and analysis\") e aba **Security**.\n\n- **Dependabot alerts:** avisam quando uma dependência do dependency graph tem vulnerabilidade conhecida (GitHub Advisory Database).\n- **Dependabot security updates:** abrem PRs automáticos que atualizam a dependência vulnerável para uma versão corrigida.\n- **Dependabot version updates:** mantêm dependências atualizadas mesmo sem vulnerabilidade, configuradas em `.github/dependabot.yml`.\n- **Secret scanning:** detecta tokens, chaves e senhas no repositório e gera alertas. Parceiros como a AWS podem ser avisados para revogar o token.\n- **Push protection:** bloqueia o push que contém segredo antes que ele entre no histórico. Ativo por padrão para usuários em repositórios públicos.\n- **Code scanning (CodeQL):** analisa o código-fonte em busca de vulnerabilidades, normalmente via Actions.\n- **Security advisories:** mantenedores discutem e corrigem uma vulnerabilidade em privado e publicam o aviso (CVE).\n- **Private vulnerability reporting:** pesquisadores reportam falhas em privado.\n\nEm repositórios públicos esses recursos são gratuitos. Em privados, secret scanning e code scanning exigem GitHub Secret Protection e GitHub Code Security (antigo GitHub Advanced Security).\n\n### Pegadinhas do exame\n\n- **Triage x Write:** Triage gerencia issues e PRs, mas não faz push de código.\n- **Maintain x Admin:** Maintain não apaga o repositório nem muda configurações sensíveis.\n- **Outside collaborator x member:** o colaborador externo não é membro e só acessa repositórios específicos.\n- **EMU x SAML SSO:** no EMU a empresa é dona da conta; no SSO a pessoa usa a conta pessoal.\n- **Internal x private:** internal = toda a enterprise; private = só quem recebeu acesso. Internal só existe em enterprise.\n- **Dependabot alerts x security updates x version updates:** avisar; corrigir vulnerabilidade com PR; manter tudo atualizado.\n- **Secret scanning x push protection:** secret scanning acha segredos que já entraram; push protection impede a entrada.\n- **Secret scanning x code scanning:** segredos expostos x falhas no código.\n- **SMS** é o método de 2FA menos seguro; passkeys e chaves físicas resistem a phishing.\n\n### Resumo para revisão\n\n- 2FA: TOTP, chave física, passkey, GitHub Mobile, SMS; guarde os recovery codes.\n- Repositório: Read < Triage < Write < Maintain < Admin.\n- Organização: Owner, Member (base permission), Billing manager, Security manager, Moderator, Outside collaborator.\n- Times: acesso em grupo, aninháveis, `@org/time`.\n- EMU: contas do IdP, SCIM, sem conteúdo público.\n- Visibilidade: public, private, internal (só enterprise).\n- Branch protection e rulesets: PR obrigatório, aprovações, status checks, code owners, sem force push.\n- Dependabot (alerts, security updates, version updates), secret scanning + push protection, CodeQL.",
+  "quiz": {
+    "title": "Teste do Capítulo 6",
+    "questions": [
+      {
+        "n": 1,
+        "text": "Uma pessoa deve rotular, atribuir e fechar issues e PRs, mas sem permissão para enviar código. Qual papel dar a ela?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Read"
+          },
+          {
+            "letter": "B",
+            "text": "Write"
+          },
+          {
+            "letter": "C",
+            "text": "Triage"
+          },
+          {
+            "letter": "D",
+            "text": "Maintain"
+          }
+        ],
+        "answer": "C",
+        "explanation": "Triage gerencia issues e PRs sem push. A não permite rotular nem fechar itens dos outros. B e D dão push de código."
+      },
+      {
+        "n": 2,
+        "text": "Qual destes métodos de segundo fator é resistente a phishing?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Passkey ou chave de segurança física"
+          },
+          {
+            "letter": "B",
+            "text": "Código de verificação enviado por SMS"
+          },
+          {
+            "letter": "C",
+            "text": "Código de verificação enviado por e-mail"
+          },
+          {
+            "letter": "D",
+            "text": "Recovery codes salvos em um arquivo de texto"
+          }
+        ],
+        "answer": "A",
+        "explanation": "Passkeys e chaves WebAuthn são ligadas ao domínio e resistem a phishing. B pode ser interceptado ou sofrer troca de chip. C não é um método de 2FA do GitHub. D são códigos de recuperação, não fator do dia a dia, e um arquivo de texto pode vazar."
+      },
+      {
+        "n": 3,
+        "text": "O que caracteriza as contas de Enterprise Managed Users (EMU)?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "São contas pessoais que entram na organização por convite e usam SAML SSO."
+          },
+          {
+            "letter": "B",
+            "text": "São contas criadas e controladas pelo IdP da empresa, sem conteúdo público."
+          },
+          {
+            "letter": "C",
+            "text": "São contas de bot usadas apenas para executar workflows do GitHub Actions."
+          },
+          {
+            "letter": "D",
+            "text": "São contas de colaboradores externos com acesso a um único repositório."
+          }
+        ],
+        "answer": "B",
+        "explanation": "No EMU o IdP cria e controla as contas, que não publicam conteúdo público. A descreve SAML SSO com contas pessoais. C descreve machine users ou GitHub Apps. D descreve outside collaborators."
+      },
+      {
+        "n": 4,
+        "text": "Quem pode ver um repositório com visibilidade internal?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Qualquer pessoa na internet, mesmo sem login."
+          },
+          {
+            "letter": "B",
+            "text": "Somente colaboradores adicionados um a um."
+          },
+          {
+            "letter": "C",
+            "text": "Somente os owners da organização dona do repositório."
+          },
+          {
+            "letter": "D",
+            "text": "Todos os membros da enterprise à qual a organização pertence."
+          }
+        ],
+        "answer": "D",
+        "explanation": "Internal é visível a todos os membros da enterprise. A é public. B é private. C é restrição maior do que a real."
+      },
+      {
+        "n": 5,
+        "text": "Como impedir merges no `main` sem duas aprovações e sem o CI passar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Criar uma branch protection rule (ou ruleset) para o `main`."
+          },
+          {
+            "letter": "B",
+            "text": "Escrever as regras no arquivo `CONTRIBUTING.md`."
+          },
+          {
+            "letter": "C",
+            "text": "Exigir um label `needs-review` em todos os pull requests."
+          },
+          {
+            "letter": "D",
+            "text": "Mudar a visibilidade do repositório para internal."
+          }
+        ],
+        "answer": "A",
+        "explanation": "Branch protection e rulesets exigem aprovações e status checks. B só documenta, sem bloquear. C não é um mecanismo de bloqueio. D muda quem vê, não como se faz merge."
+      },
+      {
+        "n": 6,
+        "text": "O que o Dependabot security updates faz?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Bloqueia pushes que contenham tokens e senhas."
+          },
+          {
+            "letter": "B",
+            "text": "Analisa o código-fonte em busca de falhas com CodeQL."
+          },
+          {
+            "letter": "C",
+            "text": "Lista as dependências lidas dos arquivos de manifesto."
+          },
+          {
+            "letter": "D",
+            "text": "Abre PRs que atualizam dependências vulneráveis."
+          }
+        ],
+        "answer": "D",
+        "explanation": "Security updates abre PRs de correção. A é push protection. B é code scanning. C é o dependency graph."
+      },
+      {
+        "n": 7,
+        "text": "Qual recurso impede que uma chave de acesso da AWS entre no repositório durante um push?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Dependabot alerts"
+          },
+          {
+            "letter": "B",
+            "text": "Push protection do secret scanning"
+          },
+          {
+            "letter": "C",
+            "text": "Code scanning com CodeQL"
+          },
+          {
+            "letter": "D",
+            "text": "Branch protection rule no `main`"
+          }
+        ],
+        "answer": "B",
+        "explanation": "Push protection bloqueia o segredo antes que entre no histórico. A avisa sobre dependências vulneráveis. C procura falhas no código, não segredos. D controla merges, não o conteúdo de commits."
+      },
+      {
+        "n": 8,
+        "text": "A organização quer que uma pessoa do financeiro gerencie pagamentos e faturas sem acessar o código. Qual papel?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Outside collaborator"
+          },
+          {
+            "letter": "B",
+            "text": "Security manager"
+          },
+          {
+            "letter": "C",
+            "text": "Billing manager"
+          },
+          {
+            "letter": "D",
+            "text": "Moderator"
+          }
+        ],
+        "answer": "C",
+        "explanation": "Billing manager cuida da cobrança sem acesso ao código. A dá acesso a repositórios específicos. B cuida de alertas de segurança. D modera conversas."
+      }
+    ]
+  }
+}

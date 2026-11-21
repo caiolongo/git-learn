@@ -1,0 +1,203 @@
+{
+  "id": "cap2",
+  "title": "Capítulo 2 — Trabalhando com repositórios no GitHub",
+  "short": "Cap. 2",
+  "contentMd": "Um repositório bem montado tem README, licença, regras de contribuição e donos de código definidos. A aba Insights mostra como ele está sendo usado. Peso na prova: 10–15%.\n\n### Objetivos de aprendizagem\n\n- Reconhecer os arquivos-chave: README, LICENSE, CONTRIBUTING, CODEOWNERS, SECURITY, CODE\\_OF\\_CONDUCT e .gitignore.\n- Criar repositórios do zero ou a partir de templates, e organizá-los com branches, topics e releases.\n- Adicionar, editar, mover e apagar arquivos pela interface.\n- Ler Insights, stars, dependency graph e ativar feature previews.\n- Aplicar boas práticas de manutenção.\n\n### Estrutura e arquivos-chave\n\n| Arquivo | Para que serve | Onde fica |\n| --- | --- | --- |\n| `README.md` | Apresenta o projeto; aparece na página inicial do repo | Raiz, `.github/` ou `docs/` |\n| `LICENSE` | Diz o que outros podem fazer com o código | Raiz |\n| `CONTRIBUTING.md` | Ensina como contribuir; o GitHub mostra um link ao abrir issue ou PR | Raiz, `.github/` ou `docs/` |\n| `CODEOWNERS` | Define donos de arquivos ou pastas; eles viram revisores automáticos nos PRs | Raiz, `.github/` ou `docs/` |\n| `SECURITY.md` | Política de segurança: como reportar vulnerabilidades em privado | Raiz, `.github/` ou `docs/` |\n| `CODE_OF_CONDUCT.md` | Regras de comportamento na comunidade | Raiz, `.github/` ou `docs/` |\n| `.gitignore` | Arquivos que o Git deve ignorar (ex.: `node_modules/`, `.env`) | Raiz |\n| `.github/` | Templates de issue e PR, workflows do Actions, `dependabot.yml` | Pasta na raiz |\n\nExemplo de `CODEOWNERS`:\n\n```text\n*.js        @org/time-frontend\n/docs/      @maria\n```\n\nCom esse arquivo, um PR que altera `app.js` pede revisão do time frontend automaticamente. Se a branch protection exigir \"review from Code Owners\", o merge só acontece com essa aprovação.\n\nSem `LICENSE`, vale o direito autoral padrão. As pessoas podem ver e fazer fork no GitHub (pelos Termos de Serviço), mas não têm permissão legal de reutilizar o código.\n\n### Criar e organizar repositórios\n\nCaminho na interface: **+** (canto superior direito) → **New repository**. Escolha dono (sua conta ou uma organização), nome, visibilidade e, opcionalmente, README, `.gitignore` e licença.\n\n- **Template repository:** em **Settings → General**, marque **Template repository**. Outras pessoas clicam em **Use this template** e ganham um repositório novo com os mesmos arquivos, histórico limpo e sem vínculo com o original.\n- **Branches:** o branch padrão (`main`) recebe PRs por padrão e pode ser renomeado em **Settings → General → Default branch**.\n- **Topics:** palavras-chave na seção About (ex.: `python`, `machine-learning`) que ajudam na busca.\n- **Tags e releases:** uma tag marca um commit (ex.: `v1.2.0`). Uma release é a página publicada sobre a tag, com notas e arquivos binários anexados.\n- **Archive:** **Settings → Danger Zone → Archive this repository** deixa o repositório somente leitura, sem apagá-lo.\n\n### Adicionar e gerenciar arquivos\n\n- **Add file → Create new file** ou **Upload files** na página do repositório. Para criar uma pasta, digite `pasta/arquivo.md` no nome.\n- O ícone de lápis edita o arquivo. Ao salvar, escolha **Commit directly to the main branch** ou **Create a new branch and start a pull request**.\n- Tecla `.` abre o github.dev para edições maiores (Cap. 4).\n- **Limites:** a interface web aceita uploads de até 25 MB por arquivo. Via Git, o GitHub avisa acima de 50 MB e bloqueia acima de 100 MB. Para arquivos grandes, use **Git LFS** (Large File Storage).\n- **Histórico e autoria:** **History** mostra os commits do arquivo; **Blame** mostra quem alterou cada linha.\n\n### Insights, stars e métricas\n\nA aba **Insights** funciona como painel de métricas do repositório:\n\n- **Pulse:** resumo de PRs e issues abertos e fechados no período.\n- **Contributors:** commits por pessoa ao longo do tempo.\n- **Traffic:** visitantes, clones e sites de origem dos últimos 14 dias. Requer acesso de push.\n- **Commits** e **Code frequency:** volume de commits, adições e remoções.\n- **Dependency graph:** pacotes de que o projeto depende (lidos de manifestos como `package.json`) e quem depende dele. É a base do Dependabot.\n- **Network** e **Forks:** a árvore de branches e os forks existentes.\n\nOrganizações no GitHub Enterprise Cloud têm também **dependency insights**: visão das dependências e licenças de todos os repositórios da organização.\n\n- **Star:** marca o repositório como favorito e sinaliza apreço. Não gera notificações. A lista fica em **seu perfil → Stars**.\n- **Watch:** controla as notificações que você recebe do repositório (Cap. 3).\n- **Feature preview:** menu do avatar → **Feature preview**. Ativa ou desativa recursos em prévia na sua conta.\n\n### Boas práticas\n\n- Tenha README, LICENSE, CONTRIBUTING e, em projetos públicos, CODE\\_OF\\_CONDUCT e SECURITY.\n- Proteja o `main` e trabalhe por PRs (Cap. 6).\n- Use `.gitignore` para nunca versionar segredos e dependências geradas.\n- Use templates de issue e PR em `.github/ISSUE_TEMPLATE/` e `.github/pull_request_template.md`.\n- Arquive repositórios sem manutenção em vez de apagá-los.\n- A aba **Insights → Community standards** mostra uma checklist de arquivos recomendados.\n\n### Pegadinhas do exame\n\n- **Fork x clone x template:** fork = cópia no GitHub ligada ao original, útil para mandar PR de volta. Clone = cópia local. Template = repositório novo, histórico limpo, sem vínculo.\n- **Star x watch:** star é favorito e sinal de apreço; watch controla notificações.\n- **Archive x delete:** arquivar deixa somente leitura e reversível; apagar remove.\n- **CODEOWNERS x CONTRIBUTING:** CODEOWNERS define revisores automáticos; CONTRIBUTING só orienta contribuidores.\n- **SECURITY.md x secret scanning:** SECURITY.md é a política escrita para reportar falhas; secret scanning é ferramenta automática (Cap. 6).\n- **Sem licença não é domínio público.** Vale o direito autoral padrão.\n- **Tag x release:** tag é um marcador Git; release é recurso do GitHub construído sobre uma tag.\n\n### Resumo para revisão\n\n- Arquivos de comunidade ficam na raiz, em `.github/` ou em `docs/`.\n- CODEOWNERS pede revisão automática; pode ser exigido pela branch protection.\n- Template repository → **Use this template** → repositório novo sem histórico.\n- Upload web até 25 MB; aviso acima de 50 MB; bloqueio acima de 100 MB; acima disso, Git LFS.\n- Insights: Pulse, Contributors, Traffic (14 dias), Commits, Code frequency, Dependency graph, Network, Forks.\n- Star = favorito; watch = notificações; archive = somente leitura.\n- Feature preview fica no menu do avatar.",
+  "quiz": {
+    "title": "Teste do Capítulo 2",
+    "questions": [
+      {
+        "n": 1,
+        "text": "Qual arquivo faz o GitHub pedir revisão automática de um time quando um PR altera arquivos de uma pasta?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "`CONTRIBUTING.md`"
+          },
+          {
+            "letter": "B",
+            "text": "`SECURITY.md`"
+          },
+          {
+            "letter": "C",
+            "text": "`CODEOWNERS`"
+          },
+          {
+            "letter": "D",
+            "text": "`.gitignore`"
+          }
+        ],
+        "answer": "C",
+        "explanation": "CODEOWNERS mapeia caminhos para donos, que viram revisores automáticos. A só orienta contribuidores. B descreve como reportar vulnerabilidades. D lista arquivos que o Git ignora."
+      },
+      {
+        "n": 2,
+        "text": "Você quer começar um projeto com a mesma estrutura de outro repositório, mas sem o histórico e sem vínculo com ele. O que fazer?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Criar o repositório a partir de um template repository."
+          },
+          {
+            "letter": "B",
+            "text": "Fazer fork do repositório original para sua conta."
+          },
+          {
+            "letter": "C",
+            "text": "Clonar o repositório e trocar o remote para o novo destino."
+          },
+          {
+            "letter": "D",
+            "text": "Usar o GitHub Importer mantendo todos os commits."
+          }
+        ],
+        "answer": "A",
+        "explanation": "Template gera repositório novo com histórico limpo e sem vínculo. B mantém histórico e vínculo com o original. C leva todo o histórico junto. D também preserva os commits."
+      },
+      {
+        "n": 3,
+        "text": "Um repositório público não tem arquivo `LICENSE`. O que vale para quem quer reutilizar o código?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "O código passa automaticamente a ser de domínio público."
+          },
+          {
+            "letter": "B",
+            "text": "O GitHub aplica a licença MIT como padrão."
+          },
+          {
+            "letter": "C",
+            "text": "Qualquer pessoa pode reutilizar desde que cite o autor."
+          },
+          {
+            "letter": "D",
+            "text": "Vale o direito autoral padrão e o reuso não é permitido."
+          }
+        ],
+        "answer": "D",
+        "explanation": "Sem licença, o autor retém todos os direitos; os Termos do GitHub só permitem ver e fazer fork. A e C supõem permissões que não existem. B está errada: o GitHub nunca aplica licença por conta própria."
+      },
+      {
+        "n": 4,
+        "text": "Onde você vê quantos visitantes e clones um repositório teve nas últimas duas semanas?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Settings → General"
+          },
+          {
+            "letter": "B",
+            "text": "Insights → Traffic"
+          },
+          {
+            "letter": "C",
+            "text": "Actions → Usage metrics"
+          },
+          {
+            "letter": "D",
+            "text": "Security → Overview"
+          }
+        ],
+        "answer": "B",
+        "explanation": "Insights → Traffic mostra visitantes, clones e origens dos últimos 14 dias. A tem configurações gerais, não métricas. C não existe com esse conteúdo; uso do Actions aparece em billing. D mostra alertas e política de segurança."
+      },
+      {
+        "n": 5,
+        "text": "O que acontece quando você dá star em um repositório?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Ele vai para seus favoritos e conta como sinal de apreço, sem notificações."
+          },
+          {
+            "letter": "B",
+            "text": "Você passa a receber notificações de todas as atividades dele."
+          },
+          {
+            "letter": "C",
+            "text": "Uma cópia dele é criada na sua conta para você editar."
+          },
+          {
+            "letter": "D",
+            "text": "Você recebe permissão de leitura caso ele seja privado."
+          }
+        ],
+        "answer": "A",
+        "explanation": "Star é favorito e sinal de popularidade. B descreve watch. C descreve fork. D: star não dá acesso; só é possível dar star no que você já vê."
+      },
+      {
+        "n": 6,
+        "text": "Um arquivo de 300 MB precisa ser versionado no repositório. Qual a solução recomendada?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Incluir o arquivo no `.gitignore` e fazer push normalmente."
+          },
+          {
+            "letter": "B",
+            "text": "Fazer upload pela interface web, que aceita arquivos maiores."
+          },
+          {
+            "letter": "C",
+            "text": "Anexar o arquivo a uma issue para que ele seja versionado."
+          },
+          {
+            "letter": "D",
+            "text": "Usar o Git Large File Storage (Git LFS) para o arquivo."
+          }
+        ],
+        "answer": "D",
+        "explanation": "Acima de 100 MB o push é bloqueado; Git LFS guarda o arquivo fora do histórico e deixa um ponteiro. A faz o arquivo deixar de ser versionado. B: a interface web aceita no máximo 25 MB. C: anexos de issue não são versionados."
+      },
+      {
+        "n": 7,
+        "text": "Qual recurso lista os pacotes de que o projeto depende, lidos de arquivos como `package.json`?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Network graph"
+          },
+          {
+            "letter": "B",
+            "text": "Code frequency"
+          },
+          {
+            "letter": "C",
+            "text": "Dependency graph"
+          },
+          {
+            "letter": "D",
+            "text": "Contributors"
+          }
+        ],
+        "answer": "C",
+        "explanation": "O dependency graph lê manifestos e lockfiles. A mostra branches e forks. B mostra adições e remoções por semana. D mostra commits por pessoa."
+      },
+      {
+        "n": 8,
+        "text": "Como ativar na sua conta um recurso da interface que ainda está em prévia?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Settings do repositório → Features"
+          },
+          {
+            "letter": "B",
+            "text": "Menu do avatar → Feature preview"
+          },
+          {
+            "letter": "C",
+            "text": "GitHub Marketplace → Previews"
+          },
+          {
+            "letter": "D",
+            "text": "Insights → Community standards"
+          }
+        ],
+        "answer": "B",
+        "explanation": "Feature preview fica no menu do avatar e vale para sua conta. A só liga recursos do repositório, como wiki e issues. C é a loja de apps e actions. D é a checklist de arquivos de comunidade."
+      }
+    ]
+  }
+}

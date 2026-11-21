@@ -1,0 +1,14 @@
+{
+  "name": "gh900-estudo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc --watch",
+    "start": "tsc && node server.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

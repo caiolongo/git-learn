@@ -1,0 +1,179 @@
+{
+  "id": "cap5",
+  "title": "Capítulo 5 — Gerenciamento de projetos",
+  "short": "Cap. 5",
+  "contentMd": "GitHub Projects organiza issues e PRs de vários repositórios em tabela, quadro ou roadmap. Labels e milestones classificam e agrupam o trabalho dentro de cada repositório. Peso na prova: 5–10%.\n\n### Objetivos de aprendizagem\n\n- Descrever o GitHub Projects e seus layouts.\n- Configurar campos, views, workflows integrados, labels e milestones.\n- Usar saved replies e assignees para agilizar a comunicação.\n- Ler os insights de um projeto para acompanhar progresso.\n\n### GitHub Projects\n\nUm projeto pertence a um usuário ou a uma organização, não a um repositório. Ele pode reunir itens de vários repositórios e aparecer vinculado a eles. Caminho: perfil ou organização → aba **Projects → New project**, ou partir de um template.\n\n- **Itens:** issues, pull requests e **draft issues** (rascunhos que existem só no projeto e podem virar issue depois).\n- **Layouts:** **Table** (planilha), **Board** (colunas estilo kanban, em geral pelo campo Status) e **Roadmap** (linha do tempo por datas ou iterações).\n- **Views:** cada aba salva layout, filtro, agrupamento, ordenação e \"slice by\". Ex.: uma view \"Meus itens\" com filtro `assignee:@me`.\n- **Campos personalizados:** texto, número, data, single select (ex.: Prioridade) e **iteration** (sprints com duração fixa). Campos nativos incluem Status, Assignees, Labels, Milestone e Repository.\n- **Workflows integrados:** automações sem código. Ex.: quando a issue é fechada, Status vira Done; quando o PR é mesclado, Status vira Done; auto-add de itens de um repositório por filtro; auto-archive. Para regras mais complexas, use GitHub Actions com a API.\n- **Insights:** gráficos configuráveis do projeto. **Current charts** mostram o estado atual (ex.: itens por responsável). **Historical charts** mostram a evolução no tempo (ex.: burn-up por status).\n- **Status updates:** atualizações do projeto com situação (On track, At risk, Off track) e datas.\n\n### Labels\n\nLabels são etiquetas coloridas por repositório para issues, PRs e discussions. Caminho: **Issues → Labels**.\n\n- Labels padrão de repositórios novos: `bug`, `documentation`, `duplicate`, `enhancement`, `good first issue`, `help wanted`, `invalid`, `question`, `wontfix`.\n- `good first issue` e `help wanted` ajudam novos contribuidores a encontrar tarefas.\n- Organizações podem definir labels padrão para todos os repositórios novos nas configurações da organização.\n- Filtro: `label:bug -label:wontfix`.\n\n### Milestones\n\nMilestone agrupa issues e PRs de um repositório rumo a uma meta, normalmente com data de vencimento. Ex.: \"v2.0 — 15/03\". O GitHub mostra a porcentagem concluída pela proporção de itens fechados. Caminho: **Issues → Milestones → New milestone**. Cada issue ou PR tem no máximo um milestone.\n\n### Assignees e saved replies\n\n- **Assignees:** quem é responsável pela issue ou PR (até 10). Filtre com `assignee:@me` ou `no:assignee`.\n- **Saved replies:** respostas prontas e reutilizáveis, salvas na sua conta. Caminho: **Settings → Saved replies**. Para inserir, use o botão de resposta salva na caixa de comentário ou `Ctrl + .`. Ex.: \"Obrigado pelo report! Pode informar a versão e os passos para reproduzir?\".\n- **Templates de issue e PR** padronizam a abertura; saved replies padronizam as respostas.\n\n### Pegadinhas do exame\n\n- **Projects x Projects (classic):** o classic foi descontinuado. Hoje há só o Projects com Table, Board e Roadmap.\n- **Projeto x repositório:** projetos pertencem a usuários ou organizações e reúnem vários repositórios. Labels e milestones são por repositório.\n- **Milestone x iteration:** milestone é do repositório, com data e porcentagem. Iteration é campo do projeto para sprints repetidos.\n- **Milestone x label:** label classifica (tipo, área, prioridade). Milestone agrupa por meta e prazo.\n- **Draft issue x draft PR:** draft issue é rascunho no projeto. Draft PR é pull request ainda não pronto para revisão.\n- **Saved replies x templates:** saved replies são respostas pessoais em comentários. Templates ficam no repositório e moldam a abertura de issues e PRs.\n- **Workflows do Projects x GitHub Actions:** os do Projects são regras prontas sem YAML; Actions exige código.\n\n### Resumo para revisão\n\n- Projects: Table, Board, Roadmap; views salvas; campos personalizados; iteration.\n- Itens: issues, PRs e draft issues.\n- Workflows integrados: closed ou merged → Done, auto-add, auto-archive.\n- Insights: current charts e historical charts.\n- Labels por repositório; padrões definidos pela organização.\n- Milestone: data, porcentagem concluída, um por item.\n- Saved replies: **Settings → Saved replies**.",
+  "quiz": {
+    "title": "Teste do Capítulo 5",
+    "questions": [
+      {
+        "n": 1,
+        "text": "Qual layout do GitHub Projects mostra os itens em uma linha do tempo, por datas ou iterações?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Table"
+          },
+          {
+            "letter": "B",
+            "text": "Roadmap"
+          },
+          {
+            "letter": "C",
+            "text": "Board"
+          },
+          {
+            "letter": "D",
+            "text": "Insights"
+          }
+        ],
+        "answer": "B",
+        "explanation": "Roadmap exibe itens em linha do tempo usando campos de data ou iteração. A é a visão de planilha. C é o quadro kanban por colunas. D é a área de gráficos, não um layout."
+      },
+      {
+        "n": 2,
+        "text": "O time quer agrupar as issues da versão 3.0, definir uma data-alvo e ver a porcentagem concluída. O que usar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Um label `v3.0`"
+          },
+          {
+            "letter": "B",
+            "text": "Uma view filtrada no projeto"
+          },
+          {
+            "letter": "C",
+            "text": "Uma saved reply"
+          },
+          {
+            "letter": "D",
+            "text": "Um milestone"
+          }
+        ],
+        "answer": "D",
+        "explanation": "Milestone tem data e mostra porcentagem concluída. A só classifica, sem data nem progresso. B filtra itens, mas não dá a porcentagem do milestone. C é texto pronto para comentários."
+      },
+      {
+        "n": 3,
+        "text": "Qual recurso guarda textos que você reutiliza com frequência em comentários de issues e PRs?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Saved replies"
+          },
+          {
+            "letter": "B",
+            "text": "Issue templates"
+          },
+          {
+            "letter": "C",
+            "text": "Discussion categories"
+          },
+          {
+            "letter": "D",
+            "text": "Copilot custom instructions"
+          }
+        ],
+        "answer": "A",
+        "explanation": "Saved replies são respostas salvas na sua conta. B molda a abertura de issues. C organiza discussions. D orienta o Copilot, não seus comentários."
+      },
+      {
+        "n": 4,
+        "text": "Como fazer o campo Status de um item mudar para Done quando a issue é fechada, sem escrever código?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Criar uma branch protection rule no `main`."
+          },
+          {
+            "letter": "B",
+            "text": "Adicionar um label `done` a todas as issues."
+          },
+          {
+            "letter": "C",
+            "text": "Ativar o workflow integrado do Projects."
+          },
+          {
+            "letter": "D",
+            "text": "Incluir uma regra no arquivo `CODEOWNERS`."
+          }
+        ],
+        "answer": "C",
+        "explanation": "Os workflows integrados do Projects fazem isso sem código. A protege branches. B exigiria rotular à mão e não muda o Status. D define revisores, não automações de projeto."
+      },
+      {
+        "n": 5,
+        "text": "O que é uma draft issue no GitHub Projects?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Um item que existe só no projeto e pode virar issue depois."
+          },
+          {
+            "letter": "B",
+            "text": "Uma issue de repositório privado exibida como rascunho."
+          },
+          {
+            "letter": "C",
+            "text": "Um pull request em modo draft vinculado ao projeto."
+          },
+          {
+            "letter": "D",
+            "text": "Uma issue fechada que foi arquivada automaticamente."
+          }
+        ],
+        "answer": "A",
+        "explanation": "Draft issue vive no projeto e pode ser convertida em issue de um repositório. B: não existe esse conceito. C é draft pull request. D descreve o auto-archive."
+      },
+      {
+        "n": 6,
+        "text": "A gestora quer um gráfico da quantidade de itens por status ao longo das últimas semanas. Onde criar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Repository Insights → Pulse"
+          },
+          {
+            "letter": "B",
+            "text": "Na página de Milestones"
+          },
+          {
+            "letter": "C",
+            "text": "Nos insights do projeto"
+          },
+          {
+            "letter": "D",
+            "text": "Na caixa de notificações"
+          }
+        ],
+        "answer": "C",
+        "explanation": "Os insights do projeto têm gráficos históricos. A resume a atividade do repositório, sem campos do projeto. B só mostra a porcentagem de cada milestone. D lista notificações."
+      },
+      {
+        "n": 7,
+        "text": "Uma organização quer que todo repositório novo já nasça com os mesmos labels personalizados. Como fazer?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Criar os labels dentro de um projeto da organização."
+          },
+          {
+            "letter": "B",
+            "text": "Criar um milestone padrão em cada repositório."
+          },
+          {
+            "letter": "C",
+            "text": "Declarar os labels no arquivo `CODEOWNERS`."
+          },
+          {
+            "letter": "D",
+            "text": "Definir labels padrão nas configurações da organização."
+          }
+        ],
+        "answer": "D",
+        "explanation": "Organizações definem labels padrão para repositórios novos. A: labels são por repositório, não por projeto. B agrupa por meta e prazo. C define donos de código."
+      }
+    ]
+  }
+}

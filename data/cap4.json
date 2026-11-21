@@ -1,0 +1,203 @@
+{
+  "id": "cap4",
+  "title": "Capítulo 4 — Desenvolvimento moderno",
+  "short": "Cap. 4",
+  "contentMd": "GitHub Actions automatiza; Copilot sugere e escreve código com IA; Codespaces dá um ambiente completo na nuvem; github.dev é um editor leve no navegador. Peso na prova: 10–15%.\n\n### Objetivos de aprendizagem\n\n- Descrever workflows, eventos, jobs, steps, runners e actions do GitHub Actions.\n- Explicar o que o Copilot faz: sugestões, Chat, Agent Mode, coding agent e escolha de modelos.\n- Comparar os planos do Copilot para pessoas e para organizações.\n- Configurar um codespace com dev container.\n- Saber quando usar github.dev e quando usar Codespaces.\n\n### GitHub Actions\n\nGitHub Actions roda automações quando algo acontece no repositório. Usos comuns: CI (build e testes a cada push ou PR), CD (deploy), rotular issues e publicar pacotes.\n\n| Conceito | O que é |\n| --- | --- |\n| Workflow | Arquivo YAML em `.github/workflows/` que define a automação |\n| Evento (`on:`) | O gatilho: `push`, `pull_request`, `schedule` (cron), `workflow_dispatch` (manual), `issues`, `release` |\n| Job | Conjunto de steps que roda em um runner; jobs rodam em paralelo por padrão (`needs:` cria dependência) |\n| Step | Comando de shell (`run:`) ou uma action (`uses:`) |\n| Action | Bloco reutilizável, publicado no GitHub Marketplace (ex.: `actions/checkout`) |\n| Runner | Máquina que executa o job: GitHub-hosted (Ubuntu, Windows, macOS) ou self-hosted (sua infraestrutura) |\n| Secrets | Valores sensíveis em **Settings → Secrets and variables → Actions**, lidos com `${{ secrets.NOME }}` |\n\n```yaml\nname: CI\non:\n  pull_request:\n    branches: [main]\njobs:\n  testes:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - uses: actions/setup-node@v4\n        with:\n          node-version: 20\n      - run: npm ci\n      - run: npm test\n```\n\nOs resultados aparecem na aba **Actions** e como checks no PR. Repositórios públicos usam runners GitHub-hosted padrão de graça. Privados têm uma cota mensal de minutos conforme o plano.\n\n### GitHub Copilot\n\nCopilot é o assistente de IA do GitHub. Funciona em VS Code, Visual Studio, JetBrains, Xcode, Eclipse, no github.com, no GitHub Mobile e no terminal (Copilot CLI).\n\n- **Code completion:** sugere a próxima linha ou função enquanto você digita. Tab aceita.\n- **Next edit suggestions:** prevê a próxima edição com base na que você acabou de fazer.\n- **Copilot Chat:** perguntas em linguagem natural sobre o código, explicações, testes e correções.\n- **Agent Mode (no IDE):** recebe uma tarefa, planeja os passos, edita vários arquivos, roda comandos e testes, e corrige erros até terminar. Você acompanha e aprova.\n- **Copilot coding agent (no GitHub):** você atribui uma issue ao Copilot. Ele trabalha sozinho em um ambiente com GitHub Actions e abre um pull request para sua revisão.\n- **Copilot code review:** peça o Copilot como revisor de um PR.\n- **Multi-model:** escolha o modelo por conversa (modelos da OpenAI, Anthropic, Google e outros). Alguns contam como \"premium requests\".\n- **Custom instructions:** `.github/copilot-instructions.md` passa regras do projeto ao Copilot.\n\nO Copilot pode errar. Revise, teste e mantenha as práticas de segurança. O filtro de código público pode bloquear sugestões iguais a código público.\n\n| Plano | Para quem | Destaques |\n| --- | --- | --- |\n| Copilot Free | Pessoas | Cota mensal limitada de completions e mensagens de chat |\n| Copilot Pro | Pessoas | Uso ilimitado de completions e chat com modelos padrão, cota de premium requests, coding agent; grátis para estudantes, professores e mantenedores open source elegíveis |\n| Copilot Pro+ | Pessoas | Tudo do Pro, mais premium requests e acesso a todos os modelos |\n| Copilot Business | Organizações (Free, Team ou Enterprise) | Gestão de licenças e políticas pela organização, exclusão de conteúdo, logs de auditoria, indenização de propriedade intelectual, código não usado para treinar modelos |\n| Copilot Enterprise | Empresas no GitHub Enterprise Cloud | Tudo do Business, mais premium requests e recursos integrados ao github.com no nível da enterprise |\n\nO guia oficial ainda chama os planos pessoais de \"Copilot for Individuals\". Na prova, \"Individuals\" corresponde a Free, Pro e Pro+.\n\n### GitHub Codespaces\n\nCodespace é um ambiente de desenvolvimento completo na nuvem: uma máquina virtual com container, terminal, depuração e portas. Você usa pelo VS Code no navegador ou no desktop, ou pelo JetBrains.\n\n- **Criar:** no repositório, **Code → Codespaces → Create codespace on main**.\n- **Dev container:** `.devcontainer/devcontainer.json` define imagem, ferramentas, extensões do VS Code, portas e comandos pós-criação. Todo mundo do time recebe o mesmo ambiente.\n- **Personalização pessoal:** dotfiles, Settings Sync, tema e tipo de máquina (2, 4, 8, 16 ou 32 núcleos).\n- **Prebuilds:** pré-montam o ambiente para o codespace abrir mais rápido.\n- **Ciclo de vida:** para sozinho após 30 minutos sem uso (padrão configurável). Codespaces parados são apagados após 30 dias de inatividade (padrão).\n- **Custo:** cobrado por tempo de computação (core-hours) e armazenamento. Contas pessoais têm uma cota mensal gratuita.\n\n### github.dev\n\ngithub.dev é um editor VS Code leve que roda inteiramente no navegador. É gratuito.\n\n- **Abrir:** pressione `.` na página do repositório ou de um PR, ou troque `github.com` por `github.dev` na URL.\n- **Serve para:** editar vários arquivos, navegar no código, fazer commits e revisar PRs.\n- **Não tem:** terminal, execução de código, depuração nem compilação. Só aceita extensões web.\n\n|  | github.dev | Codespaces |\n| --- | --- | --- |\n| Custo | Gratuito | Pago por uso, com cota gratuita para contas pessoais |\n| Terminal | Não | Sim |\n| Rodar e depurar código | Não | Sim |\n| Onde roda | Só no navegador | VM na nuvem, acessada pelo navegador ou IDE |\n| Como abrir | Tecla `.` | Code → Codespaces |\n| Personalização | Extensões web | Dev container, dotfiles, tipo de máquina |\n\n### Pegadinhas do exame\n\n- **Codespaces x github.dev:** precisa de terminal ou rodar código? Codespaces. Só editar e commitar? github.dev.\n- **Action x workflow:** workflow é o arquivo YAML do repositório; action é um bloco reutilizável usado dentro dele (`uses:`).\n- **GitHub-hosted x self-hosted:** self-hosted roda na sua infraestrutura e acessa redes internas e hardware específico.\n- **Agent Mode x coding agent:** Agent Mode roda no seu IDE com você acompanhando. Coding agent trabalha sozinho no GitHub a partir de uma issue e abre um PR.\n- **Business x Enterprise:** Business serve qualquer organização. Enterprise exige GitHub Enterprise Cloud.\n- **Dev container x workflow:** `.devcontainer/` configura o ambiente do codespace; `.github/workflows/` configura automações.\n- **Secrets do Actions** não aparecem nos logs e não são lidos por workflows disparados de forks, por padrão.\n\n### Resumo para revisão\n\n- Actions: workflow YAML em `.github/workflows/` → eventos → jobs → steps → runners.\n- Actions reutilizáveis vêm do Marketplace (`uses:`).\n- Copilot: completions, Chat, Agent Mode (IDE), coding agent (issue → PR), code review, escolha de modelo.\n- Planos: Free, Pro, Pro+ (pessoas); Business (organizações); Enterprise (Enterprise Cloud).\n- Codespaces: VM na nuvem, terminal, `devcontainer.json`, prebuilds, cobrança por uso.\n- github.dev: tecla `.`, gratuito, sem terminal nem execução.",
+  "quiz": {
+    "title": "Teste do Capítulo 4",
+    "questions": [
+      {
+        "n": 1,
+        "text": "Onde ficam os arquivos que definem workflows do GitHub Actions?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Em `.github/workflows/`, como arquivos YAML."
+          },
+          {
+            "letter": "B",
+            "text": "Em `.github/actions/`, como arquivos JSON."
+          },
+          {
+            "letter": "C",
+            "text": "Em `.devcontainer/`, como arquivos YAML."
+          },
+          {
+            "letter": "D",
+            "text": "Na raiz do repositório, em `workflow.json`."
+          }
+        ],
+        "answer": "A",
+        "explanation": "Workflows são YAML em `.github/workflows/`. B: não é esse o caminho nem o formato. C é a pasta do dev container do Codespaces. D: o Actions não lê esse arquivo."
+      },
+      {
+        "n": 2,
+        "text": "Uma pessoa quer, no navegador, rodar os testes do projeto em um terminal sem instalar nada localmente. O que usar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "github.dev"
+          },
+          {
+            "letter": "B",
+            "text": "GitHub Pages"
+          },
+          {
+            "letter": "C",
+            "text": "GitHub Codespaces"
+          },
+          {
+            "letter": "D",
+            "text": "GitHub Desktop"
+          }
+        ],
+        "answer": "C",
+        "explanation": "Codespaces dá VM com terminal no navegador. A não tem terminal nem execução. B hospeda sites estáticos. D é aplicativo instalado localmente."
+      },
+      {
+        "n": 3,
+        "text": "Como abrir rapidamente o editor github.dev a partir de um repositório?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Clicar em Code → Codespaces → Create codespace."
+          },
+          {
+            "letter": "B",
+            "text": "Pressionar a tecla `.` na página do repositório."
+          },
+          {
+            "letter": "C",
+            "text": "Abrir Settings → Developer settings → Web editor."
+          },
+          {
+            "letter": "D",
+            "text": "Instalar o GitHub Desktop como extensão do navegador."
+          }
+        ],
+        "answer": "B",
+        "explanation": "A tecla `.` abre o github.dev. A cria um codespace, que é outro produto. C não existe. D: o Desktop é um aplicativo, não extensão."
+      },
+      {
+        "n": 4,
+        "text": "Você atribui uma issue ao Copilot, ele implementa a mudança sozinho e abre um pull request. Que recurso é esse?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Copilot code completion"
+          },
+          {
+            "letter": "B",
+            "text": "Copilot Chat no modo Ask"
+          },
+          {
+            "letter": "C",
+            "text": "Copilot code review"
+          },
+          {
+            "letter": "D",
+            "text": "Copilot coding agent"
+          }
+        ],
+        "answer": "D",
+        "explanation": "O coding agent trabalha de forma autônoma a partir de uma issue e entrega um PR. A só sugere código enquanto você digita. B responde perguntas. C revisa PRs existentes."
+      },
+      {
+        "n": 5,
+        "text": "Uma organização no plano GitHub Team quer comprar o Copilot para 40 pessoas e controlar políticas e exclusão de conteúdo. Qual plano?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Copilot Free"
+          },
+          {
+            "letter": "B",
+            "text": "Copilot Pro"
+          },
+          {
+            "letter": "C",
+            "text": "Copilot Pro+"
+          },
+          {
+            "letter": "D",
+            "text": "Copilot Business"
+          }
+        ],
+        "answer": "D",
+        "explanation": "Business é para organizações e traz gestão de políticas e exclusão de conteúdo. A, B e C são planos pessoais, sem gestão centralizada."
+      },
+      {
+        "n": 6,
+        "text": "Qual arquivo define as ferramentas, extensões e portas de um codespace para todo o time?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "`.github/workflows/codespace.yml`"
+          },
+          {
+            "letter": "B",
+            "text": "`.devcontainer/devcontainer.json`"
+          },
+          {
+            "letter": "C",
+            "text": "`.github/dependabot.yml`"
+          },
+          {
+            "letter": "D",
+            "text": "`.vscode/settings.json`"
+          }
+        ],
+        "answer": "B",
+        "explanation": "O `devcontainer.json` define o ambiente do codespace. A é caminho de workflow do Actions. C configura o Dependabot. D guarda preferências do editor, sem definir o container."
+      },
+      {
+        "n": 7,
+        "text": "Um workflow precisa acessar servidores da rede interna da empresa e um hardware específico. Onde ele deve rodar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Em um runner GitHub-hosted com Ubuntu"
+          },
+          {
+            "letter": "B",
+            "text": "No editor github.dev do repositório"
+          },
+          {
+            "letter": "C",
+            "text": "Em um runner self-hosted da empresa"
+          },
+          {
+            "letter": "D",
+            "text": "Em um codespace com prebuild ativado"
+          }
+        ],
+        "answer": "C",
+        "explanation": "Self-hosted roda na infraestrutura da empresa e alcança a rede interna. A roda na nuvem do GitHub, fora da rede. B nem executa código. D é ambiente de desenvolvimento, não executor de workflows."
+      },
+      {
+        "n": 8,
+        "text": "O que descreve o Agent Mode do Copilot no IDE?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "O Copilot planeja e executa uma tarefa de várias etapas, editando arquivos e rodando comandos."
+          },
+          {
+            "letter": "B",
+            "text": "O Copilot sugere o próximo trecho de código enquanto você digita no editor."
+          },
+          {
+            "letter": "C",
+            "text": "O Copilot revisa um pull request no GitHub e deixa comentários nas linhas."
+          },
+          {
+            "letter": "D",
+            "text": "O Copilot responde perguntas sobre o código sem alterar nenhum arquivo."
+          }
+        ],
+        "answer": "A",
+        "explanation": "Agent Mode executa tarefas de várias etapas no IDE. B descreve code completion. C descreve Copilot code review. D descreve o Chat em modo Ask."
+      }
+    ]
+  }
+}

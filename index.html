@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GH-900 · GitHub Foundations</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="dist/main.js"></script>
+</head>
+<body>
+  <header>
+    <div class="top">
+      <h1>GH-900 · GitHub Foundations</h1>
+      <div class="progress">
+        <span id="prog-text"></span>
+        <div class="bar"><span id="prog-bar"></span></div>
+        <button class="btn" id="export" title="Baixa um arquivo JSON com seu progresso">Exportar</button>
+        <button class="btn" id="import" title="Carrega um arquivo JSON de progresso">Importar</button>
+        <input type="file" id="import-file" accept="application/json" hidden>
+        <button class="btn" id="reset-all" title="Apaga marcações e respostas salvas neste navegador">Zerar</button>
+      </div>
+    </div>
+    <nav id="tabs" role="tablist"></nav>
+  </header>
+  <main id="content"><p class="muted">Carregando…</p></main>
+</body>
+</html>

@@ -1,0 +1,731 @@
+{
+  "id": "simulado",
+  "title": "Simulado geral — 30 questões",
+  "short": "Simulado",
+  "contentMd": "As 30 questões seguem o peso de cada domínio: 8 de fundamentos; 4 de repositórios, colaboração, desenvolvimento moderno e segurança; 3 de projetos e de comunidade. Faça sem consultar e mire 70% ou mais (21 acertos). O gabarito indica o domínio de cada questão para você ver onde revisar.",
+  "quiz": {
+    "title": "Questões",
+    "questions": [
+      {
+        "n": 1,
+        "text": "Qual é um benefício de o Git ser um sistema distribuído?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "O histórico fica só no servidor, evitando cópias divergentes."
+          },
+          {
+            "letter": "B",
+            "text": "Só uma pessoa edita cada arquivo por vez, evitando conflitos."
+          },
+          {
+            "letter": "C",
+            "text": "Cada clone tem o histórico completo, permitindo commits offline."
+          },
+          {
+            "letter": "D",
+            "text": "Os commits vão para o remoto automaticamente ao serem criados."
+          }
+        ],
+        "answer": "C",
+        "explanation": "(Domínio 1). Cada clone tem o histórico completo. A descreve sistemas centralizados. B descreve travamento de arquivos, que o Git não faz. D: commits só vão ao remoto com `git push`."
+      },
+      {
+        "n": 2,
+        "text": "Um revisor quer propor a troca de uma linha específica de forma que o autor aplique com um clique. O que ele usa?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Uma suggested change em um comentário de linha"
+          },
+          {
+            "letter": "B",
+            "text": "Um novo pull request para o branch do autor"
+          },
+          {
+            "letter": "C",
+            "text": "Uma saved reply com o trecho de código corrigido"
+          },
+          {
+            "letter": "D",
+            "text": "Uma issue nova vinculada ao pull request"
+          }
+        ],
+        "answer": "A",
+        "explanation": "(Domínio 3). Suggested change propõe a troca e o autor aceita com um clique. B cria trabalho paralelo desnecessário. C é só texto pronto. D não altera o código do PR."
+      },
+      {
+        "n": 3,
+        "text": "Qual evento permite disparar um workflow manualmente pela aba Actions?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "`push`"
+          },
+          {
+            "letter": "B",
+            "text": "`schedule`"
+          },
+          {
+            "letter": "C",
+            "text": "`pull_request`"
+          },
+          {
+            "letter": "D",
+            "text": "`workflow_dispatch`"
+          }
+        ],
+        "answer": "D",
+        "explanation": "(Domínio 4). `workflow_dispatch` adiciona o botão \"Run workflow\". A dispara a cada push. B dispara por cron. C dispara com eventos de PR."
+      },
+      {
+        "n": 4,
+        "text": "Qual comando cria um branch chamado `feature` e já muda para ele?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "`git branch -d feature`"
+          },
+          {
+            "letter": "B",
+            "text": "`git switch -c feature`"
+          },
+          {
+            "letter": "C",
+            "text": "`git merge feature`"
+          },
+          {
+            "letter": "D",
+            "text": "`git fetch feature`"
+          }
+        ],
+        "answer": "B",
+        "explanation": "(Domínio 1). `git switch -c` cria e muda (equivale a `git checkout -b`). A apaga o branch. C mescla o branch no atual. D baixa do remoto."
+      },
+      {
+        "n": 5,
+        "text": "Uma pessoa de uma agência externa precisa acessar só um repositório da organização, sem se tornar membro. Como adicioná-la?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Como member com base permission Read"
+          },
+          {
+            "letter": "B",
+            "text": "Como outside collaborator no repositório"
+          },
+          {
+            "letter": "C",
+            "text": "Como billing manager da organização"
+          },
+          {
+            "letter": "D",
+            "text": "Como owner com acesso limitado por time"
+          }
+        ],
+        "answer": "B",
+        "explanation": "(Domínio 6). Outside collaborator acessa repositórios específicos sem ser membro. A torna a pessoa membro. C dá acesso à cobrança. D dá controle total da organização."
+      },
+      {
+        "n": 6,
+        "text": "Ao editar um arquivo pela interface web, qual opção faz a alteração passar por revisão antes de entrar no `main`?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Commit directly to the main branch"
+          },
+          {
+            "letter": "B",
+            "text": "Save draft no editor web"
+          },
+          {
+            "letter": "C",
+            "text": "Create a new branch and start a pull request"
+          },
+          {
+            "letter": "D",
+            "text": "Abrir o arquivo no modo Blame"
+          }
+        ],
+        "answer": "C",
+        "explanation": "(Domínio 2). Criar branch e abrir PR leva a mudança para revisão. A grava direto no `main`. B não é uma opção de commit do GitHub. D só mostra a autoria das linhas."
+      },
+      {
+        "n": 7,
+        "text": "Qual é a principal diferença entre uma conta pessoal e uma organização?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "A organização é compartilhada e reúne pessoas, times e repositórios."
+          },
+          {
+            "letter": "B",
+            "text": "A organização não pode ter repositórios públicos."
+          },
+          {
+            "letter": "C",
+            "text": "A conta pessoal gerencia várias organizações com cobrança central."
+          },
+          {
+            "letter": "D",
+            "text": "A organização só existe no plano GitHub Enterprise."
+          }
+        ],
+        "answer": "A",
+        "explanation": "(Domínio 1). Organização é conta compartilhada com times e repositórios. B: organizações têm repositórios públicos. C descreve a conta enterprise. D: organizações existem no Free e no Team."
+      },
+      {
+        "n": 8,
+        "text": "No GitHub Projects, qual tipo de campo representa sprints de duas semanas que se repetem?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Single select"
+          },
+          {
+            "letter": "B",
+            "text": "Milestone"
+          },
+          {
+            "letter": "C",
+            "text": "Date"
+          },
+          {
+            "letter": "D",
+            "text": "Iteration"
+          }
+        ],
+        "answer": "D",
+        "explanation": "(Domínio 5). Iteration cria ciclos de duração fixa. A guarda opções fixas, como prioridade. B é recurso do repositório, não campo de sprint. C guarda uma data avulsa."
+      },
+      {
+        "n": 9,
+        "text": "Qual afirmação sobre o GitHub Sponsors está correta?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Permite patrocinar pessoas e organizações com valores mensais ou únicos."
+          },
+          {
+            "letter": "B",
+            "text": "Só empresas no plano Enterprise podem receber patrocínio."
+          },
+          {
+            "letter": "C",
+            "text": "Dá ao patrocinador acesso de escrita aos repositórios patrocinados."
+          },
+          {
+            "letter": "D",
+            "text": "É a loja onde se compram GitHub Apps e Actions de terceiros."
+          }
+        ],
+        "answer": "A",
+        "explanation": "(Domínio 7). Sponsors aceita valores mensais ou únicos para pessoas e organizações. B: pessoas também recebem. C: patrocínio não dá acesso. D descreve o Marketplace."
+      },
+      {
+        "n": 10,
+        "text": "Um colega diz que o GitHub Flow exige os branches `develop` e `release`. Ele está certo?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Sim; todo trabalho sai de `develop` e passa por `release`."
+          },
+          {
+            "letter": "B",
+            "text": "Sim, mas apenas em repositórios de organizações."
+          },
+          {
+            "letter": "C",
+            "text": "Não; o GitHub Flow usa `main` e branches curtos de feature."
+          },
+          {
+            "letter": "D",
+            "text": "Não; no GitHub Flow os commits vão direto para o `main`."
+          }
+        ],
+        "answer": "C",
+        "explanation": "(Domínio 1). GitHub Flow usa `main` mais branches de feature. A e B descrevem o Git Flow. D ignora os branches e o PR, centrais no fluxo."
+      },
+      {
+        "n": 11,
+        "text": "Você quer parar de receber notificações de uma issue específica, mas continuar recebendo as do resto do repositório. O que fazer?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Mudar o watch do repositório para Ignore."
+          },
+          {
+            "letter": "B",
+            "text": "Remover o star que você deu no repositório."
+          },
+          {
+            "letter": "C",
+            "text": "Desligar as notificações por e-mail em Settings."
+          },
+          {
+            "letter": "D",
+            "text": "Clicar em Unsubscribe na própria issue."
+          }
+        ],
+        "answer": "D",
+        "explanation": "(Domínio 3). Unsubscribe na issue vale só para ela. A silencia o repositório todo. B não afeta notificações. C corta o e-mail de tudo e mantém a notificação na web."
+      },
+      {
+        "n": 12,
+        "text": "Qual afirmação compara corretamente github.dev e Codespaces?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "O github.dev tem terminal; o Codespaces só edita arquivos."
+          },
+          {
+            "letter": "B",
+            "text": "O github.dev é gratuito e sem terminal; o Codespaces roda em VM com terminal."
+          },
+          {
+            "letter": "C",
+            "text": "Os dois são cobrados por core-hour usado no mês."
+          },
+          {
+            "letter": "D",
+            "text": "O Codespaces abre com a tecla `.`; o github.dev, pelo botão Code."
+          }
+        ],
+        "answer": "B",
+        "explanation": "(Domínio 4). github.dev é gratuito e sem terminal; Codespaces é VM com terminal. A inverte os dois. C: github.dev não é cobrado. D inverte as formas de abrir."
+      },
+      {
+        "n": 13,
+        "text": "Qual opção de branch protection impede que alguém reescreva o histórico do `main`?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Exigir commits assinados"
+          },
+          {
+            "letter": "B",
+            "text": "Exigir status checks aprovados"
+          },
+          {
+            "letter": "C",
+            "text": "Bloquear force pushes"
+          },
+          {
+            "letter": "D",
+            "text": "Exigir revisão de code owners"
+          }
+        ],
+        "answer": "C",
+        "explanation": "(Domínio 6). Bloquear force push impede reescrever o histórico remoto. A exige assinatura, mas permite force push. B exige CI aprovado. D exige aprovação dos donos."
+      },
+      {
+        "n": 14,
+        "text": "O que é uma release no GitHub?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Uma página publicada a partir de uma tag, com notas e arquivos anexados."
+          },
+          {
+            "letter": "B",
+            "text": "Um branch protegido que só recebe correções de bugs."
+          },
+          {
+            "letter": "C",
+            "text": "Um milestone fechado com todas as issues concluídas."
+          },
+          {
+            "letter": "D",
+            "text": "Um fork estável mantido pela própria organização."
+          }
+        ],
+        "answer": "A",
+        "explanation": "(Domínio 2). Release se baseia em uma tag e traz notas e binários. B descreve um branch de manutenção. C é um milestone. D é um fork."
+      },
+      {
+        "n": 15,
+        "text": "Em um comentário de issue, como notificar todo o time `design` da organização `acme`?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "`#acme/design`"
+          },
+          {
+            "letter": "B",
+            "text": "`@acme/design`"
+          },
+          {
+            "letter": "C",
+            "text": "`$acme/design`"
+          },
+          {
+            "letter": "D",
+            "text": "`/acme/design`"
+          }
+        ],
+        "answer": "B",
+        "explanation": "(Domínio 1). `@org/time` menciona e notifica o time. A: `#` referencia issues e PRs. C e D não são sintaxe do GitHub."
+      },
+      {
+        "n": 16,
+        "text": "Uma empresa quer que times reutilizem e contribuam no código uns dos outros, sem publicar nada fora. O que adotar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Open source com repositórios públicos"
+          },
+          {
+            "letter": "B",
+            "text": "Forks privados por pessoa, sem pull requests"
+          },
+          {
+            "letter": "C",
+            "text": "Secret gists compartilhados por link"
+          },
+          {
+            "letter": "D",
+            "text": "InnerSource com repositórios internal"
+          }
+        ],
+        "answer": "D",
+        "explanation": "(Domínio 7). InnerSource com visibilidade internal abre o código para a empresa toda. A publica para o mundo. B isola as pessoas e impede contribuições. C serve para trechos, e o link vaza fácil."
+      },
+      {
+        "n": 17,
+        "text": "Onde se cria um milestone?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Na aba Projects da organização"
+          },
+          {
+            "letter": "B",
+            "text": "Em Settings → Branches do repositório"
+          },
+          {
+            "letter": "C",
+            "text": "Em Issues → Milestones do repositório"
+          },
+          {
+            "letter": "D",
+            "text": "No menu do avatar → Your projects"
+          }
+        ],
+        "answer": "C",
+        "explanation": "(Domínio 5). Milestones são por repositório, em Issues → Milestones. A cria projetos. B configura proteção de branches. D lista seus projetos."
+      },
+      {
+        "n": 18,
+        "text": "Como um workflow do GitHub Actions lê uma senha guardada como secret?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Com `${{ secrets.NOME }}` no arquivo YAML."
+          },
+          {
+            "letter": "B",
+            "text": "Lendo um arquivo `.env` versionado no repositório."
+          },
+          {
+            "letter": "C",
+            "text": "Com a senha escrita em texto no README."
+          },
+          {
+            "letter": "D",
+            "text": "Com o comando `git config --get secret`."
+          }
+        ],
+        "answer": "A",
+        "explanation": "(Domínio 4). Secrets são lidos com `${{ secrets.NOME }}`. B e C expõem a senha no repositório. D lê configurações do Git, não secrets."
+      },
+      {
+        "n": 19,
+        "text": "Uma designer quer fazer commits e trocar de branch em um repositório local no Windows, com interface gráfica e sem linha de comando. O que indicar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "GitHub Mobile"
+          },
+          {
+            "letter": "B",
+            "text": "GitHub CLI (`gh`)"
+          },
+          {
+            "letter": "C",
+            "text": "GitHub Pages"
+          },
+          {
+            "letter": "D",
+            "text": "GitHub Desktop"
+          }
+        ],
+        "answer": "D",
+        "explanation": "(Domínio 1). GitHub Desktop é o cliente gráfico de Git. A foca em revisão e notificações. B é linha de comando. C publica sites."
+      },
+      {
+        "n": 20,
+        "text": "O owner da organização quer controlar quais modelos de IA do Copilot os membros podem usar. Onde ele faz isso?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "No arquivo `.github/copilot-instructions.md`"
+          },
+          {
+            "letter": "B",
+            "text": "Nas políticas de Copilot da organização"
+          },
+          {
+            "letter": "C",
+            "text": "Nas branch protection rules do repositório"
+          },
+          {
+            "letter": "D",
+            "text": "No `devcontainer.json` de cada projeto"
+          }
+        ],
+        "answer": "B",
+        "explanation": "(Domínio 6). Políticas de Copilot da organização definem recursos e modelos liberados. A orienta o Copilot sobre o projeto, sem controlar acesso. C protege branches. D configura o ambiente do codespace."
+      },
+      {
+        "n": 21,
+        "text": "Qual a vantagem de um issue form (YAML) sobre um template de issue em Markdown?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Cria campos estruturados, inclusive obrigatórios."
+          },
+          {
+            "letter": "B",
+            "text": "Fecha a issue sozinho quando o PR é mesclado."
+          },
+          {
+            "letter": "C",
+            "text": "Converte a issue em discussion automaticamente."
+          },
+          {
+            "letter": "D",
+            "text": "Atribui a issue ao Copilot sem configuração extra."
+          }
+        ],
+        "answer": "A",
+        "explanation": "(Domínio 3). Issue forms têm campos estruturados e validação. B é papel das palavras-chave no PR. C é ação manual. D não existe como efeito de template."
+      },
+      {
+        "n": 22,
+        "text": "Você quer saber quem alterou por último cada linha de um arquivo. O que usar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "History do repositório"
+          },
+          {
+            "letter": "B",
+            "text": "Insights → Pulse"
+          },
+          {
+            "letter": "C",
+            "text": "Blame"
+          },
+          {
+            "letter": "D",
+            "text": "Insights → Network"
+          }
+        ],
+        "answer": "C",
+        "explanation": "(Domínio 2). Blame mostra o último commit de cada linha. A lista commits, mas não por linha. B resume atividade de issues e PRs. D mostra branches e forks."
+      },
+      {
+        "n": 23,
+        "text": "O que um commit registra?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Só os nomes dos arquivos alterados, sem o conteúdo."
+          },
+          {
+            "letter": "B",
+            "text": "Um retrato das mudanças com autor, data, mensagem e hash."
+          },
+          {
+            "letter": "C",
+            "text": "Uma cópia do repositório na conta de outra pessoa."
+          },
+          {
+            "letter": "D",
+            "text": "Um pedido para mesclar um branch no `main`."
+          }
+        ],
+        "answer": "B",
+        "explanation": "(Domínio 1). Commit guarda o estado com metadados e hash. A está incompleto. C é um fork. D é um pull request."
+      },
+      {
+        "n": 24,
+        "text": "Uma view do projeto deve mostrar só os itens atribuídos a quem está logado. Qual filtro usar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "`is:open author:me`"
+          },
+          {
+            "letter": "B",
+            "text": "`label:@me`"
+          },
+          {
+            "letter": "C",
+            "text": "`no:assignee`"
+          },
+          {
+            "letter": "D",
+            "text": "`assignee:@me`"
+          }
+        ],
+        "answer": "D",
+        "explanation": "(Domínio 5). `assignee:@me` filtra o que está atribuído a você. A filtra o que você criou, e a sintaxe correta seria `author:@me`. B: `@me` não vale para labels. C mostra itens sem responsável."
+      },
+      {
+        "n": 25,
+        "text": "Você perdeu o celular com o app autenticador. O que permite entrar na conta?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Os recovery codes baixados ao configurar o 2FA"
+          },
+          {
+            "letter": "B",
+            "text": "Uma nova senha criada pelo link \"Forgot password\""
+          },
+          {
+            "letter": "C",
+            "text": "Um comentário em uma issue pedindo acesso"
+          },
+          {
+            "letter": "D",
+            "text": "O owner da organização desligar o seu 2FA"
+          }
+        ],
+        "answer": "A",
+        "explanation": "(Domínio 6). Recovery codes substituem o segundo fator. B troca só a senha; o 2FA continua exigido. C não é canal de recuperação. D: owners não desligam o 2FA de contas pessoais."
+      },
+      {
+        "n": 26,
+        "text": "Como fazer um codespace abrir rápido, com as dependências já instaladas?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Usar o github.dev no lugar do codespace."
+          },
+          {
+            "letter": "B",
+            "text": "Escolher um runner self-hosted para ele."
+          },
+          {
+            "letter": "C",
+            "text": "Configurar prebuilds para o repositório."
+          },
+          {
+            "letter": "D",
+            "text": "Ativar o Dependabot version updates."
+          }
+        ],
+        "answer": "C",
+        "explanation": "(Domínio 4). Prebuilds pré-montam o ambiente. A troca o produto e perde o terminal. B é executor do Actions. D atualiza dependências via PR, sem acelerar o codespace."
+      },
+      {
+        "n": 27,
+        "text": "Qual afirmação sobre wikis do GitHub está correta?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Wikis só existem em repositórios privados."
+          },
+          {
+            "letter": "B",
+            "text": "Wikis ficam no mesmo histórico que o código."
+          },
+          {
+            "letter": "C",
+            "text": "Wikis publicam um site com domínio próprio."
+          },
+          {
+            "letter": "D",
+            "text": "Cada wiki é um repositório Git separado do código."
+          }
+        ],
+        "answer": "D",
+        "explanation": "(Domínio 3). A wiki tem repositório Git próprio (`.wiki.git`). A: existe em públicos também. B: o histórico é separado. C descreve o GitHub Pages."
+      },
+      {
+        "n": 28,
+        "text": "A organização quer que repositórios novos partam de uma base com CI e README padrão, sem herdar histórico. Qual recurso?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Fork do repositório-base"
+          },
+          {
+            "letter": "B",
+            "text": "Template repository"
+          },
+          {
+            "letter": "C",
+            "text": "Arquivo `CODEOWNERS`"
+          },
+          {
+            "letter": "D",
+            "text": "Repositório arquivado"
+          }
+        ],
+        "answer": "B",
+        "explanation": "(Domínio 2). Template gera repositório novo sem histórico. A traz histórico e vínculo. C define revisores. D deixa um repositório somente leitura."
+      },
+      {
+        "n": 29,
+        "text": "Qual é um benefício de projetos open source?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Mais pessoas podem revisar o código e corrigir falhas."
+          },
+          {
+            "letter": "B",
+            "text": "O código fica protegido contra qualquer forma de reuso."
+          },
+          {
+            "letter": "C",
+            "text": "Dispensa licença, porque código público já é livre."
+          },
+          {
+            "letter": "D",
+            "text": "Garante suporte comercial do GitHub ao projeto."
+          }
+        ],
+        "answer": "A",
+        "explanation": "(Domínio 7). Mais revisores encontram e corrigem falhas. B é o oposto do open source. C: sem licença, o reuso não é permitido. D: o GitHub não dá suporte aos projetos hospedados."
+      },
+      {
+        "n": 30,
+        "text": "Você rodou `git fetch`. O que aconteceu com seu branch local `main`?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Recebeu as mudanças do remoto já mescladas."
+          },
+          {
+            "letter": "B",
+            "text": "Foi apagado e recriado a partir do remoto."
+          },
+          {
+            "letter": "C",
+            "text": "Não mudou; só as referências remotas foram atualizadas."
+          },
+          {
+            "letter": "D",
+            "text": "Foi enviado ao remoto junto com os commits novos."
+          }
+        ],
+        "answer": "C",
+        "explanation": "(Domínio 1). `fetch` só atualiza `origin/main` e outras referências remotas. A descreve `git pull`. B não acontece com nenhum comando comum. D descreve `git push`."
+      }
+    ]
+  }
+}

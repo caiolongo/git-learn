@@ -1,0 +1,179 @@
+{
+  "id": "cap7",
+  "title": "Capítulo 7 — Benefícios da comunidade GitHub",
+  "short": "Cap. 7",
+  "contentMd": "O GitHub é a maior comunidade open source do mundo. Forks e PRs permitem contribuir sem acesso de escrita, Sponsors financia mantenedores e InnerSource leva essas práticas para dentro das empresas. Peso na prova: 5–10%.\n\n### Objetivos de aprendizagem\n\n- Explicar os benefícios do open source e como o GitHub o apoia.\n- Descrever o GitHub Sponsors.\n- Seguir usuários e organizações e descobrir projetos.\n- Descrever o GitHub Marketplace.\n- Explicar InnerSource.\n- Saber quando usar forks, templates e repositórios descobríveis.\n\n### Open source e o apoio do GitHub\n\nOpen source é código publicado com uma licença que permite usar, estudar, modificar e redistribuir. Benefícios: transparência, mais gente encontrando e corrigindo bugs, inovação mais rápida, reuso, aprendizado e portfólio.\n\n- **Licenças comuns:** MIT e Apache 2.0 (permissivas) e GPL (copyleft: derivados precisam manter a mesma licença). Veja choosealicense.com.\n- **O que o GitHub oferece de graça para projetos públicos:** repositórios ilimitados, minutos de Actions em runners padrão, Dependabot, secret scanning, code scanning e Pages.\n- **Descoberta:** github.com/explore, Topics, Trending, Collections e labels como `good first issue` e `help wanted`.\n- **Mantenedores:** Copilot Pro grátis para mantenedores elegíveis, security advisories, discussions e o GitHub Secure Open Source Fund.\n\n### GitHub Sponsors\n\nSponsors permite apoiar financeiramente pessoas e organizações que mantêm projetos open source, com valor mensal ou único e níveis (tiers) com recompensas.\n\n- O GitHub não cobra taxa em patrocínios feitos por contas pessoais.\n- O arquivo `.github/FUNDING.yml` exibe o botão **Sponsor** no repositório. Ele pode apontar para GitHub Sponsors e outras plataformas, como Open Collective e Patreon.\n- Caminho para patrocinar: perfil da pessoa ou botão **Sponsor** no repositório.\n\n### Seguir, stars e Marketplace\n\n- **Follow:** seguir uma pessoa ou organização coloca a atividade pública dela no seu feed (dashboard). Não dá acesso nem cria notificações de repositório.\n- **Stars:** favoritos e sinal de popularidade; influenciam recomendações e Trending.\n- **GitHub Marketplace** (github.com/marketplace): catálogo de **GitHub Apps** e **Actions** (gratuitos ou pagos) e extensões do Copilot que ampliam o GitHub. Exemplos: CI de terceiros, análise de código, integrações com ferramentas de projeto.\n\n### InnerSource\n\nInnerSource aplica práticas de open source dentro da empresa. O código continua interno, mas fica visível e aberto a contribuições de outros times.\n\n- Repositórios com visibilidade **internal** (ou private com acesso amplo) para todos os funcionários.\n- README e CONTRIBUTING claros, issues abertas e revisão por PR.\n- Benefícios: menos retrabalho, reuso entre times, colaboração e documentação melhores.\n- Exemplo: o time de pagamentos precisa de um ajuste na biblioteca de autenticação de outro time. Em vez de abrir um chamado e esperar, faz um PR, e o time dono revisa.\n\n### Forks, templates e repositórios descobríveis\n\n| Recurso | Use quando | Mantém vínculo com o original? |\n| --- | --- | --- |\n| Fork | Contribuir com um projeto sem acesso de escrita, ou experimentar uma variante | Sim: dá para abrir PR para o original e sincronizar (**Sync fork**) |\n| Template | Começar um projeto novo com a mesma estrutura | Não: histórico limpo |\n| Repositório descobrível | Atrair usuários e contribuidores | — |\n\nFluxo de contribuição open source:\n\n1. Clique em **Fork** no repositório original (upstream).\n2. Clone o seu fork: `git clone https://github.com/voce/projeto.git`.\n3. Crie um branch, faça commits e dê push para o seu fork.\n4. Abra um pull request do seu fork para o upstream.\n5. Os mantenedores revisam e fazem o merge.\n\nPara deixar um repositório descobrível: visibilidade pública, descrição e **topics** na seção About, README completo, licença, CONTRIBUTING e labels `good first issue`.\n\n### Pegadinhas do exame\n\n- **Fork x clone:** fork é cópia no GitHub, na sua conta; clone é cópia local. Na contribuição open source você usa os dois: fork e depois clone do fork.\n- **Fork x template:** fork mantém vínculo e histórico; template não.\n- **InnerSource x open source:** InnerSource não publica nada externamente.\n- **Follow x watch x star:** follow = pessoas e organizações no feed; watch = notificações de um repositório; star = favorito.\n- **Marketplace x Sponsors:** Marketplace vende ou distribui ferramentas; Sponsors financia pessoas e projetos.\n- **Sem licença não é open source**, mesmo sendo público.\n\n### Resumo para revisão\n\n- Open source: licença permite usar, modificar e redistribuir; MIT, Apache 2.0, GPL.\n- GitHub apoia open source com recursos gratuitos, Explore, Topics e Sponsors.\n- Sponsors: patrocínio mensal ou único; `.github/FUNDING.yml` mostra o botão Sponsor.\n- Follow leva atividade ao feed; star é favorito.\n- Marketplace: GitHub Apps, Actions e extensões.\n- InnerSource: práticas open source dentro da empresa, com repositórios internal.\n- Fork → branch → PR para o upstream.",
+  "quiz": {
+    "title": "Teste do Capítulo 7",
+    "questions": [
+      {
+        "n": 1,
+        "text": "Você quer corrigir um bug em um projeto open source onde não tem acesso de escrita. Qual o caminho?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Clonar o repositório e fazer push direto no `main` do original."
+          },
+          {
+            "letter": "B",
+            "text": "Pedir para virar owner da organização que mantém o projeto."
+          },
+          {
+            "letter": "C",
+            "text": "Criar um repositório novo a partir do template do projeto."
+          },
+          {
+            "letter": "D",
+            "text": "Fazer fork, alterar em um branch e abrir um pull request."
+          }
+        ],
+        "answer": "D",
+        "explanation": "Fork + branch + PR é o fluxo padrão sem acesso de escrita. A: sem permissão, o push é recusado. B é desproporcional e não é como se contribui. C cria um projeto desvinculado, sem como enviar a correção."
+      },
+      {
+        "n": 2,
+        "text": "O que é InnerSource?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Publicar o código interno da empresa como open source na internet."
+          },
+          {
+            "letter": "B",
+            "text": "Aplicar práticas de open source em repositórios internos da empresa."
+          },
+          {
+            "letter": "C",
+            "text": "Comprar licenças comerciais de projetos open source de terceiros."
+          },
+          {
+            "letter": "D",
+            "text": "Restringir cada repositório a um único time dono, sem contribuições."
+          }
+        ],
+        "answer": "B",
+        "explanation": "InnerSource leva práticas open source para dentro da empresa. A seria abrir o código ao público. C é compra de software. D é o oposto da ideia."
+      },
+      {
+        "n": 3,
+        "text": "Qual arquivo faz o botão Sponsor aparecer em um repositório?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "`SECURITY.md`"
+          },
+          {
+            "letter": "B",
+            "text": "`CODEOWNERS`"
+          },
+          {
+            "letter": "C",
+            "text": "`.github/FUNDING.yml`"
+          },
+          {
+            "letter": "D",
+            "text": "`LICENSE`"
+          }
+        ],
+        "answer": "C",
+        "explanation": "`FUNDING.yml` configura o botão Sponsor. A descreve como reportar vulnerabilidades. B define revisores. D define a licença."
+      },
+      {
+        "n": 4,
+        "text": "O que acontece quando você segue (follow) uma pessoa no GitHub?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "A atividade pública dela aparece no seu feed."
+          },
+          {
+            "letter": "B",
+            "text": "Você ganha acesso aos repositórios privados dela."
+          },
+          {
+            "letter": "C",
+            "text": "Você passa a dar watch em todos os repositórios dela."
+          },
+          {
+            "letter": "D",
+            "text": "Você vira colaborador dos projetos que ela mantém."
+          }
+        ],
+        "answer": "A",
+        "explanation": "Follow só leva a atividade pública ao seu feed. B: seguir não dá acesso. C: watch é configurado por repositório. D: colaborador precisa ser convidado."
+      },
+      {
+        "n": 5,
+        "text": "Para que serve o GitHub Marketplace?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Comprar repositórios privados de outros desenvolvedores."
+          },
+          {
+            "letter": "B",
+            "text": "Publicar sites estáticos com um domínio próprio."
+          },
+          {
+            "letter": "C",
+            "text": "Encontrar apps e actions que ampliam o GitHub."
+          },
+          {
+            "letter": "D",
+            "text": "Contratar mantenedores de projetos open source."
+          }
+        ],
+        "answer": "C",
+        "explanation": "Marketplace reúne GitHub Apps e Actions. A não existe. B é o GitHub Pages. D não é função do Marketplace; apoio financeiro a mantenedores é o Sponsors."
+      },
+      {
+        "n": 6,
+        "text": "Como ajudar novos contribuidores a encontrar tarefas adequadas no seu projeto?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Marcar o repositório como template repository."
+          },
+          {
+            "letter": "B",
+            "text": "Usar o label `good first issue` nas tarefas simples."
+          },
+          {
+            "letter": "C",
+            "text": "Ativar o Dependabot version updates no repositório."
+          },
+          {
+            "letter": "D",
+            "text": "Mudar a visibilidade do repositório para internal."
+          }
+        ],
+        "answer": "B",
+        "explanation": "`good first issue` aparece em buscas e nas recomendações para iniciantes. A serve para criar projetos novos. C atualiza dependências. D esconderia o projeto de quem está fora da enterprise."
+      },
+      {
+        "n": 7,
+        "text": "Como deixar um repositório público mais fácil de encontrar em buscas e no Explore?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Adicionar topics e uma descrição clara na seção About."
+          },
+          {
+            "letter": "B",
+            "text": "Ativar branch protection no branch principal."
+          },
+          {
+            "letter": "C",
+            "text": "Criar um secret gist com o link do repositório."
+          },
+          {
+            "letter": "D",
+            "text": "Fazer fork do repositório na conta da organização."
+          }
+        ],
+        "answer": "A",
+        "explanation": "Topics e descrição alimentam a busca e o Explore. B protege o branch, sem efeito na descoberta. C: secret gists nem aparecem em buscas. D cria uma cópia, sem melhorar a descoberta do original."
+      }
+    ]
+  }
+}

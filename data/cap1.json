@@ -1,0 +1,203 @@
+{
+  "id": "cap1",
+  "title": "Capítulo 1 — Introdução ao Git e ao GitHub",
+  "short": "Cap. 1",
+  "contentMd": "Git versiona arquivos na sua máquina. GitHub hospeda repositórios Git e soma colaboração, automação e segurança. Este domínio vale 25–30% da prova, o maior peso.\n\n### Objetivos de aprendizagem\n\n- Explicar para que serve o controle de versão e quais são seus benefícios.\n- Diferenciar Git de GitHub.\n- Definir repositório, commit, branch, remote, clone, push, pull e fetch.\n- Distinguir conta pessoal, organização e conta enterprise, e os planos Free, Pro, Team e Enterprise.\n- Descrever as etapas do GitHub Flow.\n- Usar Markdown em issues, pull requests e comentários.\n- Saber quando usar GitHub Desktop e GitHub Mobile.\n\n### Controle de versão\n\nControle de versão registra cada mudança em arquivos ao longo do tempo. Com ele você volta a versões anteriores e vê quem mudou o quê e quando. Também permite que várias pessoas trabalhem em paralelo sem sobrescrever o trabalho umas das outras.\n\nO Git é **distribuído**: cada clone tem o histórico completo. Dá para fazer commits offline e sincronizar depois. Em sistemas centralizados (como o SVN), o histórico fica só no servidor.\n\n### Git x GitHub\n\n|  | Git | GitHub |\n| --- | --- | --- |\n| O que é | Software de controle de versão distribuído, open source | Plataforma na nuvem que hospeda repositórios Git |\n| Onde roda | Na sua máquina (linha de comando ou cliente gráfico) | github.com, GitHub Enterprise Server ou GHE.com |\n| Criado por | Linus Torvalds, 2005 | GitHub Inc., 2008; da Microsoft desde 2018 |\n| Recursos | Commits, branches, merges, histórico | Issues, pull requests, Actions, Copilot, Projects, segurança |\n\n### Conceitos-chave do Git\n\n- **Repositório (repo):** pasta do projeto mais o histórico, guardado na pasta oculta `.git`.\n- **Working directory:** os arquivos como estão agora no disco.\n- **Staging area (index):** área onde você prepara o que entra no próximo commit.\n- **Commit:** fotografia do projeto com autor, data, mensagem e um identificador (hash SHA).\n- **Branch:** linha de desenvolvimento independente. O branch padrão costuma se chamar `main`.\n- **Merge:** junta o histórico de um branch em outro.\n- **Remote:** cópia do repositório em outro lugar. O nome padrão é `origin`.\n- **HEAD:** ponteiro para o commit ou branch em que você está.\n\n```bash\ngit init                      # cria um repositório novo na pasta atual\ngit clone <url>               # copia um repositório remoto com todo o histórico\ngit status                    # mostra o que mudou e o que está na staging area\ngit add arquivo.txt           # coloca a mudança na staging area\ngit commit -m \"mensagem\"      # grava um commit local\ngit branch nova-feature       # cria um branch\ngit switch nova-feature       # muda para o branch (ou: git checkout)\ngit switch -c outra           # cria e já muda para o branch\ngit merge nova-feature        # junta o branch no branch atual\ngit remote -v                 # lista os remotes configurados\ngit fetch                     # baixa novidades do remoto sem alterar seu branch\ngit pull                      # fetch + merge no branch atual\ngit push origin nova-feature  # envia commits locais ao remoto\ngit log --oneline             # histórico resumido\n```\n\nExemplo prático: você corrige um erro no `README.md`. Rode `git add README.md`, depois `git commit -m \"Corrige link quebrado\"`, depois `git push`. Até o push, o commit existe só na sua máquina.\n\n### Contas, organizações e enterprise\n\n- **Conta pessoal:** sua identidade no GitHub. Planos GitHub Free e GitHub Pro.\n- **Organização:** conta compartilhada onde equipes colaboram em vários repositórios, com times e permissões. Planos Free, Team e Enterprise. Pessoas entram nela com suas contas pessoais.\n- **Conta enterprise:** agrupa várias organizações com cobrança, políticas e auditoria centralizadas. Exige o plano GitHub Enterprise.\n- **Opções de hospedagem do Enterprise:** GitHub Enterprise Cloud (no github.com ou com residência de dados em GHE.com) e GitHub Enterprise Server (instalado na infraestrutura da empresa).\n\n### GitHub Flow\n\nGitHub Flow é o fluxo leve recomendado pelo GitHub:\n\n1. Crie um branch a partir do `main`, com nome descritivo.\n2. Faça commits pequenos com mensagens claras.\n3. Abra um pull request (pode ser em rascunho, como draft PR).\n4. Discuta e revise; os checks do GitHub Actions rodam.\n5. Faça o merge no `main` quando aprovado. Opcionalmente, faça o deploy.\n6. Apague o branch.\n\n### Markdown no GitHub\n\nIssues, pull requests, discussions, wikis, comentários e arquivos `.md` aceitam GitHub Flavored Markdown (GFM).\n\n| Para | Escreva |\n| --- | --- |\n| Título | `# Título`, `## Subtítulo` |\n| Negrito / itálico | `**negrito**`, `_itálico_` |\n| Lista de tarefas | `- [ ] pendente` e `- [x] feito` |\n| Código | crases simples ou bloco com três crases e a linguagem |\n| Mencionar pessoa ou time | `@usuario`, `@org/time` (notifica) |\n| Referenciar issue ou PR | `#42` |\n| Tabela | linhas separadas por barras verticais e uma linha `---` sob o cabeçalho |\n| Diagrama | bloco de código `mermaid` |\n\n### GitHub Desktop e GitHub Mobile\n\n- **GitHub Desktop** (Windows e macOS): cliente gráfico de Git. Use para clonar, fazer commits, trocar de branch, push e pull sem a linha de comando. Bom para iniciantes ou para ver diffs visualmente.\n- **GitHub Mobile** (iOS e Android): para acompanhar o trabalho longe do computador. Serve para triar notificações, comentar, revisar e aprovar PRs, fazer merge e gerenciar issues. Também aprova logins com 2FA. Não é um ambiente de desenvolvimento.\n\n### Pegadinhas do exame\n\n- **Git x GitHub:** Git é a ferramenta; GitHub é a plataforma. Branch, commit e merge são conceitos do Git. Issue, pull request e Actions são do GitHub.\n- **Commit x push:** commit grava localmente; só o push envia ao GitHub.\n- **Fetch x pull:** fetch só baixa; pull baixa e integra (fetch + merge).\n- **Clone x fork:** clone é uma cópia local (Git). Fork é uma cópia do repositório em outra conta, no servidor (GitHub). Mais no Cap. 2.\n- **GitHub Flow x Git Flow:** GitHub Flow usa só `main` e branches de feature curtos. Git Flow usa `develop`, `release` e `hotfix`. A prova cobra o GitHub Flow.\n- **Organização x enterprise:** organização agrupa repositórios e times. Enterprise agrupa organizações.\n- **Desktop x Mobile:** Desktop faz operações Git. Mobile foca em revisão, notificações e triagem.\n\n### Resumo para revisão\n\n- Controle de versão: histórico, rastreabilidade, trabalho em paralelo, possibilidade de desfazer.\n- Git é distribuído: cada clone tem o histórico completo.\n- O fluxo local é working directory → `git add` (staging) → `git commit` (local) → `git push` (remoto).\n- `fetch` baixa; `pull` = fetch + merge.\n- Conta pessoal (Free/Pro) → organização (Free/Team/Enterprise) → conta enterprise (várias organizações).\n- GitHub Flow: branch → commits → PR → revisão → merge → apagar branch.\n- Markdown: `- [ ]` cria tarefas, `@` menciona, `#n` referencia issue ou PR.\n- Desktop = Git com interface gráfica; Mobile = revisar e triar em trânsito.",
+  "quiz": {
+    "title": "Teste do Capítulo 1",
+    "questions": [
+      {
+        "n": 1,
+        "text": "Qual afirmação descreve corretamente Git e GitHub?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Git é um serviço de hospedagem da Microsoft; GitHub é o programa que versiona arquivos localmente."
+          },
+          {
+            "letter": "B",
+            "text": "Git é um controle de versão distribuído; GitHub é uma plataforma que hospeda repositórios Git."
+          },
+          {
+            "letter": "C",
+            "text": "Git e GitHub são o mesmo produto; GitHub é o nome comercial da versão paga do Git."
+          },
+          {
+            "letter": "D",
+            "text": "Git exige conexão com a internet; GitHub permite versionar offline e sincronizar depois."
+          }
+        ],
+        "answer": "B",
+        "explanation": "Git é o software de versionamento distribuído; GitHub hospeda repositórios Git e adiciona colaboração. A inverte os papéis. C está errada porque são produtos distintos e o Git é gratuito. D inverte a lógica: o Git funciona offline."
+      },
+      {
+        "n": 2,
+        "text": "Você fez três commits locais e quer que eles apareçam no repositório do GitHub. Qual comando usar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "`git fetch`"
+          },
+          {
+            "letter": "B",
+            "text": "`git commit`"
+          },
+          {
+            "letter": "C",
+            "text": "`git clone`"
+          },
+          {
+            "letter": "D",
+            "text": "`git push`"
+          }
+        ],
+        "answer": "D",
+        "explanation": "`git push` envia commits locais ao remoto. A (`fetch`) baixa do remoto. B (`commit`) grava só localmente. C (`clone`) copia um repositório remoto para a máquina."
+      },
+      {
+        "n": 3,
+        "text": "No GitHub Flow, depois de criar um branch e fazer commits, qual é o próximo passo?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Abrir um pull request para discutir e revisar as mudanças."
+          },
+          {
+            "letter": "B",
+            "text": "Fazer merge direto no `main` e depois pedir revisão."
+          },
+          {
+            "letter": "C",
+            "text": "Criar uma release e publicar uma tag de versão."
+          },
+          {
+            "letter": "D",
+            "text": "Criar um fork do repositório para isolar as mudanças."
+          }
+        ],
+        "answer": "A",
+        "explanation": "Depois dos commits vem o pull request, onde ocorre a revisão. B pula a revisão, que é o centro do fluxo. C trata de releases, que não são etapa do GitHub Flow. D: fork serve para contribuir sem acesso de escrita, não é o passo seguinte ao commit."
+      },
+      {
+        "n": 4,
+        "text": "Qual a diferença entre `git fetch` e `git pull`?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "`fetch` envia commits ao remoto; `pull` baixa commits do remoto."
+          },
+          {
+            "letter": "B",
+            "text": "`fetch` baixa e mescla no branch; `pull` só baixa sem alterar nada."
+          },
+          {
+            "letter": "C",
+            "text": "`fetch` só baixa as mudanças; `pull` baixa e integra ao branch atual."
+          },
+          {
+            "letter": "D",
+            "text": "`fetch` funciona apenas em forks; `pull` apenas no repositório original."
+          }
+        ],
+        "answer": "C",
+        "explanation": "`fetch` atualiza as referências remotas sem mexer no seu branch; `pull` faz fetch + merge (ou rebase). A confunde fetch com push. B inverte os dois. D: ambos funcionam com qualquer remote."
+      },
+      {
+        "n": 5,
+        "text": "Uma empresa tem 12 organizações no GitHub e quer cobrança e políticas centralizadas para todas. O que ela precisa?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Uma conta pessoal com o plano GitHub Pro"
+          },
+          {
+            "letter": "B",
+            "text": "Uma organização única no plano GitHub Team"
+          },
+          {
+            "letter": "C",
+            "text": "Uma conta enterprise no plano GitHub Enterprise"
+          },
+          {
+            "letter": "D",
+            "text": "Um machine user com acesso de owner a cada uma"
+          }
+        ],
+        "answer": "C",
+        "explanation": "A conta enterprise agrupa várias organizações com cobrança e políticas centrais. A é um plano individual. B é uma única organização, sem gestão de várias. D: machine user é conta para automação e não centraliza cobrança."
+      },
+      {
+        "n": 6,
+        "text": "Para qual tarefa o GitHub Mobile é mais indicado?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Revisar e aprovar pull requests e triar notificações fora do computador."
+          },
+          {
+            "letter": "B",
+            "text": "Rodar um codespace com terminal completo para compilar o projeto."
+          },
+          {
+            "letter": "C",
+            "text": "Fazer rebase interativo e resolver conflitos de merge complexos."
+          },
+          {
+            "letter": "D",
+            "text": "Registrar runners self-hosted para os workflows do GitHub Actions."
+          }
+        ],
+        "answer": "A",
+        "explanation": "O Mobile serve para revisar, comentar, aprovar e triar. B exige Codespaces no navegador ou no VS Code. C exige Git local. D é configuração de Actions feita em servidores e nas configurações do repositório."
+      },
+      {
+        "n": 7,
+        "text": "Qual sintaxe Markdown cria um item de lista de tarefas (checkbox) em uma issue?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "`* (x) revisar texto`"
+          },
+          {
+            "letter": "B",
+            "text": "`[task] revisar texto`"
+          },
+          {
+            "letter": "C",
+            "text": "`> [ ] revisar texto`"
+          },
+          {
+            "letter": "D",
+            "text": "`- [ ] revisar texto`"
+          }
+        ],
+        "answer": "D",
+        "explanation": "No GFM, tarefas são `- [ ]` (pendente) e `- [x]` (feita). A e B não são sintaxe válida. C começa com `>`, que cria citação, não tarefa."
+      },
+      {
+        "n": 8,
+        "text": "O que o comando `git add` faz?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Cria um commit com todas as mudanças do diretório."
+          },
+          {
+            "letter": "B",
+            "text": "Coloca as mudanças na staging area para o próximo commit."
+          },
+          {
+            "letter": "C",
+            "text": "Adiciona um novo repositório remoto chamado `origin`."
+          },
+          {
+            "letter": "D",
+            "text": "Envia os arquivos novos diretamente para o GitHub."
+          }
+        ],
+        "answer": "B",
+        "explanation": "`git add` move mudanças do working directory para a staging area. A descreve `git commit -a`. C descreve `git remote add`. D descreve o efeito de `git push`."
+      }
+    ]
+  }
+}

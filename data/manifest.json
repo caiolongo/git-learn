@@ -1,0 +1,69 @@
+{
+  "title": "GH-900 · GitHub Foundations",
+  "source": "https://claude.ai/artifact/LaFvbSwRufzDoFAapnzc2w",
+  "chapters": [
+    {
+      "id": "inicio",
+      "short": "Início",
+      "title": "Como usar este material",
+      "file": "inicio.json",
+      "questions": 0
+    },
+    {
+      "id": "cap1",
+      "short": "Cap. 1",
+      "title": "Capítulo 1 — Introdução ao Git e ao GitHub",
+      "file": "cap1.json",
+      "questions": 8
+    },
+    {
+      "id": "cap2",
+      "short": "Cap. 2",
+      "title": "Capítulo 2 — Trabalhando com repositórios no GitHub",
+      "file": "cap2.json",
+      "questions": 8
+    },
+    {
+      "id": "cap3",
+      "short": "Cap. 3",
+      "title": "Capítulo 3 — Recursos de colaboração",
+      "file": "cap3.json",
+      "questions": 8
+    },
+    {
+      "id": "cap4",
+      "short": "Cap. 4",
+      "title": "Capítulo 4 — Desenvolvimento moderno",
+      "file": "cap4.json",
+      "questions": 8
+    },
+    {
+      "id": "cap5",
+      "short": "Cap. 5",
+      "title": "Capítulo 5 — Gerenciamento de projetos",
+      "file": "cap5.json",
+      "questions": 7
+    },
+    {
+      "id": "cap6",
+      "short": "Cap. 6",
+      "title": "Capítulo 6 — Privacidade, segurança e administração",
+      "file": "cap6.json",
+      "questions": 8
+    },
+    {
+      "id": "cap7",
+      "short": "Cap. 7",
+      "title": "Capítulo 7 — Benefícios da comunidade GitHub",
+      "file": "cap7.json",
+      "questions": 7
+    },
+    {
+      "id": "simulado",
+      "short": "Simulado",
+      "title": "Simulado geral — 30 questões",
+      "file": "simulado.json",
+      "questions": 30
+    }
+  ]
+}

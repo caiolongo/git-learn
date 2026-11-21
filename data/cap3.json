@@ -1,0 +1,203 @@
+{
+  "id": "cap3",
+  "title": "Capítulo 3 — Recursos de colaboração",
+  "short": "Cap. 3",
+  "contentMd": "Issues registram trabalho; pull requests propõem mudanças; discussions abrigam conversas abertas. Notificações, gists, wikis e Pages completam o conjunto. Peso na prova: 10–15%.\n\n### Objetivos de aprendizagem\n\n- Escolher entre issue, pull request e discussion.\n- Vincular PRs a issues e usar templates, filtros e atribuições.\n- Comparar os métodos de merge: merge commit, squash e rebase.\n- Configurar notificações e níveis de watch.\n- Saber quando usar gists, wikis e GitHub Pages.\n\n### Issues\n\nIssue registra bug, tarefa, ideia ou pedido de melhoria. Cada uma tem número (`#12`), título, corpo em Markdown, comentários e metadados.\n\n- **Assignees:** até 10 pessoas responsáveis.\n- **Labels, milestone e project:** classificam e planejam a issue (Cap. 5).\n- **Sub-issues e issue types:** quebram uma issue grande em partes e classificam por tipo (bug, feature, task), conforme definido pela organização.\n- **Templates e issue forms:** arquivos em `.github/ISSUE_TEMPLATE/`. Os forms (YAML) criam campos obrigatórios no formulário.\n- **Pin, lock, transfer, convert to discussion:** ações na barra lateral da issue.\n- **Filtros:** `is:issue is:open label:bug assignee:@me`, `no:assignee`, `milestone:\"v2.0\"`, `author:maria`, `sort:updated-desc`.\n\nCaminho: aba **Issues → New issue**. Também dá para criar uma issue a partir de um comentário, de uma linha de código ou de um item de task list.\n\n### Pull requests\n\nPull request pede que as mudanças de um branch (base ← compare) entrem em outro branch. A revisão acontece nele.\n\n- **Draft PR:** sinaliza trabalho em andamento; não pode receber merge até ficar **Ready for review**.\n- **Revisão:** o revisor escolhe **Comment**, **Approve** ou **Request changes**. Pode comentar linhas e sugerir alterações (\"suggested changes\") que o autor aplica com um clique.\n- **Vincular a issues:** palavras-chave como `Closes #12`, `Fixes #12` ou `Resolves #12` na descrição fecham a issue quando o PR é mesclado no branch padrão. Também dá para vincular manualmente pela barra lateral **Development**.\n- **Template de PR:** `.github/pull_request_template.md` preenche a descrição automaticamente.\n- **Conflitos:** quando os dois branches mudaram as mesmas linhas, resolva pelo editor web (casos simples) ou localmente.\n- **Auto-merge:** faz o merge sozinho quando aprovações e checks obrigatórios passam.\n\n| Método de merge | O que acontece no branch base | Quando usar |\n| --- | --- | --- |\n| Create a merge commit | Todos os commits entram, mais um commit de merge | Preservar o histórico completo |\n| Squash and merge | Todos os commits viram um único commit | Histórico limpo, um commit por feature |\n| Rebase and merge | Commits são reaplicados um a um, sem commit de merge | Histórico linear mantendo cada commit |\n\nO administrador escolhe os métodos permitidos em **Settings → General → Pull Requests**.\n\n### Discussions\n\nDiscussions é um fórum dentro do repositório ou da organização. Serve para perguntas, ideias, anúncios e enquetes, que não são tarefas rastreáveis.\n\n- Ative em **Settings → General → Features → Discussions**.\n- Organiza o conteúdo por **categorias** (Q&A, Ideas, Announcements, Polls, Show and tell).\n- Em categorias Q&A, um comentário pode ser marcado como **resposta**.\n- Issue pode ser convertida em discussion e vice-versa.\n\n### Notificações\n\nAs notificações chegam pela web (**caixa de entrada** em github.com/notifications), por e-mail e pelo GitHub Mobile. Configure em **Settings → Notifications**.\n\n| Nível de watch | O que você recebe |\n| --- | --- |\n| Participating and @mentions (padrão) | Só o que você participa, quando é mencionado ou quando pedem sua revisão |\n| All Activity | Todas as issues, PRs, releases e discussions |\n| Custom | Escolha tipos: issues, PRs, releases, discussions, alertas de segurança |\n| Ignore | Nada, nem menções |\n\nNa caixa de entrada: **Mark as done**, **Save**, **Unsubscribe** e filtros como `reason:review-requested` ou `is:unread`. O botão **Subscribe/Unsubscribe** em uma issue ou PR vale só para aquela thread.\n\n### Gists\n\nGist compartilha trechos de código, notas ou arquivos soltos. Cada gist é um repositório Git: tem histórico, pode ser clonado, ter fork e receber comentários. Acesse em gist.github.com.\n\n- **Public gist:** aparece em buscas e no Discover.\n- **Secret gist:** não aparece em buscas, mas **qualquer pessoa com a URL vê**. Não é privado.\n\n### Wikis\n\nWiki é documentação longa em páginas Markdown, editadas pelo navegador e separadas do código. Cada wiki é um repositório Git próprio (`<repo>.wiki.git`).\n\n- Ative em **Settings → General → Features → Wikis**.\n- Disponível em repositórios públicos em todos os planos. Em privados, exige plano pago (Pro, Team ou Enterprise).\n- Você pode restringir a edição a colaboradores com acesso de escrita.\n\n### GitHub Pages\n\nGitHub Pages publica um **site estático** (HTML, CSS, JS) direto de um repositório. Não executa código de servidor.\n\n- **Site de usuário ou organização:** repositório `<usuario>.github.io`; um por conta.\n- **Site de projeto:** qualquer repositório, publicado em `<usuario>.github.io/<repo>`.\n- **Fonte:** **Settings → Pages** → publicar a partir de um branch e pasta (raiz ou `/docs`) ou por um workflow do GitHub Actions. Suporta Jekyll.\n- **Domínio próprio** e HTTPS são opcionais.\n- No plano Free, só repositórios públicos podem publicar. Pro, Team e Enterprise publicam de privados. O site publicado é público, exceto no Enterprise Cloud com controle de acesso.\n\n### Pegadinhas do exame\n\n- **Issue x discussion:** issue = trabalho a fazer, com dono e estado aberto ou fechado. Discussion = conversa aberta, perguntas e ideias.\n- **Merge x squash x rebase:** squash junta tudo em um commit; rebase mantém cada commit sem criar commit de merge; merge commit preserva tudo e adiciona um commit de merge.\n- **Palavra-chave de fechamento** só fecha a issue quando o PR é mesclado no branch padrão.\n- **Request changes x Comment:** só Request changes sinaliza bloqueio formal na revisão.\n- **Secret gist não é privado:** quem tiver o link acessa.\n- **Wiki x Pages:** wiki = documentação interna do repositório em páginas; Pages = site estático publicado com domínio.\n- **Watch x star:** watch muda notificações; star não.\n- **Ignore** silencia até as @menções.\n\n### Resumo para revisão\n\n- Issues: assignees (até 10), labels, milestone, sub-issues, templates e forms em `.github/ISSUE_TEMPLATE/`.\n- PR: draft, revisão (Comment, Approve, Request changes), suggested changes, auto-merge.\n- `Closes`, `Fixes` ou `Resolves #n` fecham a issue ao mesclar no branch padrão.\n- Merge commit, squash and merge, rebase and merge.\n- Discussions: categorias, Q&A com resposta marcada, conversão de e para issue.\n- Watch: Participating (padrão), All Activity, Custom, Ignore.\n- Gist secreto = não listado, mas acessível pelo link.\n- Wiki = repositório Git separado. Pages = site estático de um branch ou do Actions.",
+  "quiz": {
+    "title": "Teste do Capítulo 3",
+    "questions": [
+      {
+        "n": 1,
+        "text": "Como fazer a issue #27 fechar automaticamente quando o PR for mesclado no branch padrão?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Mencionar `@issue-27` no título do pull request."
+          },
+          {
+            "letter": "B",
+            "text": "Adicionar ao PR um label chamado `closes-27`."
+          },
+          {
+            "letter": "C",
+            "text": "Atribuir a issue #27 ao autor do pull request."
+          },
+          {
+            "letter": "D",
+            "text": "Escrever `Fixes #27` na descrição do pull request."
+          }
+        ],
+        "answer": "D",
+        "explanation": "`Fixes`, `Closes` e `Resolves` seguidos de `#n` vinculam e fecham a issue no merge para o branch padrão. A: menções com `@` são para pessoas e times. B: labels só classificam. C: atribuir define responsável, sem fechar nada."
+      },
+      {
+        "n": 2,
+        "text": "Um PR tem 14 commits pequenos e o time quer que eles entrem no `main` como um único commit. Qual opção usar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Create a merge commit"
+          },
+          {
+            "letter": "B",
+            "text": "Squash and merge"
+          },
+          {
+            "letter": "C",
+            "text": "Rebase and merge"
+          },
+          {
+            "letter": "D",
+            "text": "Enable auto-merge"
+          }
+        ],
+        "answer": "B",
+        "explanation": "Squash junta todos os commits em um. A preserva os 14 e adiciona um commit de merge. C reaplica os 14 separadamente. D só automatiza quando o merge ocorre, sem mudar o método."
+      },
+      {
+        "n": 3,
+        "text": "Uma comunidade quer um espaço para perguntas e respostas, com a melhor resposta marcada, sem misturar com o backlog. O que usar?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "GitHub Discussions"
+          },
+          {
+            "letter": "B",
+            "text": "Issues com o label `question`"
+          },
+          {
+            "letter": "C",
+            "text": "A wiki do repositório"
+          },
+          {
+            "letter": "D",
+            "text": "Gists públicos da equipe"
+          }
+        ],
+        "answer": "A",
+        "explanation": "Discussions tem categoria Q&A com resposta marcada, separada do backlog. B mistura perguntas com trabalho rastreável. C é documentação, sem perguntas e respostas. D são trechos de código isolados."
+      },
+      {
+        "n": 4,
+        "text": "Você quer ser notificado só quando participar de uma conversa ou for mencionado em um repositório. Qual configuração?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Watch → All Activity"
+          },
+          {
+            "letter": "B",
+            "text": "Watch → Ignore"
+          },
+          {
+            "letter": "C",
+            "text": "Watch → Participating and @mentions"
+          },
+          {
+            "letter": "D",
+            "text": "Dar star no repositório"
+          }
+        ],
+        "answer": "C",
+        "explanation": "Participating and @mentions é exatamente isso e é o padrão. A envia tudo. B silencia até menções. D não mexe em notificações."
+      },
+      {
+        "n": 5,
+        "text": "O que é verdade sobre um secret gist?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Só você e colaboradores convidados conseguem abri-lo."
+          },
+          {
+            "letter": "B",
+            "text": "Não aparece em buscas, mas quem tem a URL consegue vê-lo."
+          },
+          {
+            "letter": "C",
+            "text": "É criptografado e pede uma senha para ser aberto."
+          },
+          {
+            "letter": "D",
+            "text": "Fica visível apenas para membros da sua organização."
+          }
+        ],
+        "answer": "B",
+        "explanation": "Secret gist só não é listado nem indexado. A descreve um repositório privado. C: gists não têm senha. D: gists pertencem a contas pessoais, não a organizações."
+      },
+      {
+        "n": 6,
+        "text": "Qual afirmação sobre o GitHub Pages está correta?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Executa código de servidor, como PHP e Node.js."
+          },
+          {
+            "letter": "B",
+            "text": "Só publica a partir de um branch chamado `gh-pages`."
+          },
+          {
+            "letter": "C",
+            "text": "Exige um domínio próprio configurado para funcionar."
+          },
+          {
+            "letter": "D",
+            "text": "Publica sites estáticos a partir de um repositório."
+          }
+        ],
+        "answer": "D",
+        "explanation": "Pages hospeda sites estáticos. A: não há execução de servidor. B: pode usar qualquer branch e pasta, ou Actions. C: domínio próprio é opcional; o padrão é `github.io`."
+      },
+      {
+        "n": 7,
+        "text": "Ao revisar um PR, você achou um bug que precisa ser corrigido antes do merge. Qual opção de revisão escolher?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "Request changes"
+          },
+          {
+            "letter": "B",
+            "text": "Comment"
+          },
+          {
+            "letter": "C",
+            "text": "Approve"
+          },
+          {
+            "letter": "D",
+            "text": "Dismiss review"
+          }
+        ],
+        "answer": "A",
+        "explanation": "Request changes registra que o PR não deve ser mesclado ainda. B é feedback neutro. C aprova. D descarta uma revisão existente e é ação de quem mantém o repositório."
+      },
+      {
+        "n": 8,
+        "text": "A equipe quer páginas de documentação editáveis pelo navegador, com histórico, separadas dos arquivos de código do repositório. Qual recurso?",
+        "options": [
+          {
+            "letter": "A",
+            "text": "GitHub Pages"
+          },
+          {
+            "letter": "B",
+            "text": "Um secret gist"
+          },
+          {
+            "letter": "C",
+            "text": "Wiki"
+          },
+          {
+            "letter": "D",
+            "text": "Discussions"
+          }
+        ],
+        "answer": "C",
+        "explanation": "A wiki é um repositório Git separado, com páginas editáveis pelo navegador. A publica um site, normalmente gerado de arquivos do próprio repositório. B serve para trechos soltos. D é fórum, não documentação estruturada."
+      }
+    ]
+  }
+}
